@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://gui/title-screen/title-screen.gd" type="Script" id=1]
+[ext_resource path="res://gui/title-screen/logo.png" type="Texture" id=2]
+[ext_resource path="res://gui/title-screen/play-game-button.png" type="Texture" id=3]
+[ext_resource path="res://gui/title-screen/exit-game-button.png" type="Texture" id=4]
+
+[node name="TitleScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+path_scene_select_level = "res://gui/level-select/LevelSelect.tscn"
+
+[node name="Menu" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 60.0
+margin_top = 80.0
+margin_right = -60.0
+margin_bottom = -80.0
+
+[node name="Logo" type="TextureRect" parent="Menu"]
+margin_right = 520.0
+margin_bottom = 161.0
+texture = ExtResource( 2 )
+
+[node name="Buttons" type="VBoxContainer" parent="Menu"]
+margin_top = 165.0
+margin_right = 520.0
+margin_bottom = 782.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 20
+alignment = 1
+
+[node name="PlayGameButton2" type="TextureButton" parent="Menu/Buttons"]
+margin_top = 242.0
+margin_right = 520.0
+margin_bottom = 298.0
+rect_min_size = Vector2( 0, 56 )
+texture_normal = ExtResource( 3 )
+expand = true
+stretch_mode = 3
+
+[node name="QuitButton" type="TextureButton" parent="Menu/Buttons"]
+margin_top = 318.0
+margin_right = 520.0
+margin_bottom = 374.0
+rect_min_size = Vector2( 0, 56 )
+texture_normal = ExtResource( 4 )
+expand = true
+stretch_mode = 3
+
+[node name="VersionLabel" type="Label" parent="Menu"]
+margin_top = 786.0
+margin_right = 520.0
+margin_bottom = 800.0
+text = "Versión 0.0.1"
+
+[connection signal="pressed" from="Menu/Buttons/PlayGameButton2" to="." method="_on_PlayGameButton2_pressed"]
+[connection signal="pressed" from="Menu/Buttons/QuitButton" to="." method="_on_QuitButton_pressed"]

@@ -1,0 +1,84 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://gui/header/header.gd" type="Script" id=1]
+[ext_resource path="res://gui/header/score_bg.png" type="Texture" id=2]
+[ext_resource path="res://gui/font/montserrat_black.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 24
+font_data = ExtResource( 3 )
+
+[node name="Header" type="MarginContainer"]
+margin_right = 640.0
+margin_bottom = 40.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_vertical_guides_": [ 600.236 ]
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_right = 640.0
+margin_bottom = 40.0
+
+[node name="Bar1" type="HBoxContainer" parent="HBoxContainer"]
+margin_right = 496.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+
+[node name="Score" type="MarginContainer" parent="HBoxContainer/Bar1"]
+margin_right = 180.0
+margin_bottom = 40.0
+
+[node name="Background" type="NinePatchRect" parent="HBoxContainer/Bar1/Score"]
+margin_right = 180.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 180, 40 )
+texture = ExtResource( 2 )
+
+[node name="Title" type="Label" parent="HBoxContainer/Bar1/Score/Background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+custom_fonts/font = SubResource( 1 )
+text = "Score"
+valign = 1
+
+[node name="Number" type="Label" parent="HBoxContainer/Bar1/Score/Background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 1 )
+text = "10"
+align = 2
+valign = 1
+
+[node name="Bar2" type="HBoxContainer" parent="HBoxContainer"]
+margin_left = 500.0
+margin_right = 640.0
+margin_bottom = 40.0
+
+[node name="Level" type="MarginContainer" parent="HBoxContainer/Bar2"]
+margin_right = 140.0
+margin_bottom = 40.0
+
+[node name="Background" type="NinePatchRect" parent="HBoxContainer/Bar2/Level"]
+margin_right = 140.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 140, 40 )
+texture = ExtResource( 2 )
+
+[node name="Title" type="Label" parent="HBoxContainer/Bar2/Level/Background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+custom_fonts/font = SubResource( 1 )
+text = "Level"
+valign = 1
+
+[node name="Number" type="Label" parent="HBoxContainer/Bar2/Level/Background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 1 )
+text = "1"
+align = 2
+valign = 1
+

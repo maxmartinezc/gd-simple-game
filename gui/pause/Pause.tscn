@@ -1,0 +1,66 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://gui/pause/pause.gd" type="Script" id=1]
+[ext_resource path="res://gui/pause/background.png" type="Texture" id=2]
+[ext_resource path="res://gui/pause/resume-button.png" type="Texture" id=3]
+[ext_resource path="res://gui/pause/restart-button.png" type="Texture" id=4]
+[ext_resource path="res://gui/pause/exit-button.png" type="Texture" id=5]
+
+[node name="Pause" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="BlackOverlay" type="ColorRect" parent="."]
+margin_right = 640.0
+margin_bottom = 960.0
+color = Color( 0, 0, 0, 0.313726 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -250.5
+margin_top = -350.0
+margin_right = 250.5
+margin_bottom = 350.0
+texture = ExtResource( 2 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 32
+alignment = 1
+
+[node name="ResumeButton" type="TextureButton" parent="TextureRect/VBoxContainer"]
+margin_top = 198.0
+margin_right = 501.0
+margin_bottom = 278.0
+rect_min_size = Vector2( 0, 80 )
+texture_normal = ExtResource( 3 )
+expand = true
+stretch_mode = 3
+
+[node name="RestartButton" type="TextureButton" parent="TextureRect/VBoxContainer"]
+margin_top = 310.0
+margin_right = 501.0
+margin_bottom = 390.0
+rect_min_size = Vector2( 0, 80 )
+texture_normal = ExtResource( 4 )
+expand = true
+stretch_mode = 3
+
+[node name="ExitButton" type="TextureButton" parent="TextureRect/VBoxContainer"]
+margin_top = 422.0
+margin_right = 501.0
+margin_bottom = 502.0
+rect_min_size = Vector2( 0, 80 )
+texture_normal = ExtResource( 5 )
+expand = true
+stretch_mode = 3
+
+[connection signal="pressed" from="TextureRect/VBoxContainer/ResumeButton" to="." method="_on_ResumeButton_pressed"]
+[connection signal="pressed" from="TextureRect/VBoxContainer/RestartButton" to="." method="_on_RestartButton_pressed"]
+[connection signal="pressed" from="TextureRect/VBoxContainer/ExitButton" to="." method="_on_ExitButton_pressed"]
