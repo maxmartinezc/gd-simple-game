@@ -5,9 +5,6 @@ export (int) var speed = 4
 export var longitude = Vector2(300, 0)
 export (int) var type = 1
 
-#type = expo = increshendo
-#type sine = normal
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	move()

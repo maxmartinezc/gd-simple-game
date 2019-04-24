@@ -3,9 +3,11 @@
 [ext_resource path="res://levels/objects/platform-base.gd" type="Script" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 61.3037, 44.3548 )
+extents = Vector2( 60.561, 22.493 )
 
-[node name="PlatformBase" type="RigidBody2D"]
+[node name="PlatformBase" type="RigidBody2D" groups=[
+"platform",
+]]
 collision_layer = 8
 collision_mask = 2
 mode = 3

@@ -11,13 +11,10 @@ texture = ExtResource( 2 )
 [node name="Floor" parent="." index="3"]
 position = Vector2( 288.926, 744.18 )
 
-[node name="CollisionPolygon2D" parent="Floor" index="0"]
-polygon = PoolVector2Array( 357.073, 75.8195, 356.622, -628.334, 352.406, -628.334, 351.814, -19.5692, 63.2264, 12.275, 31.3823, 44.1191, -0.461823, 11.6115, -288.451, -19.6587, -287.345, -630.128, -294.472, -628.013, -294.762, 76.2287 )
-
 [node name="Hole" parent="." index="5"]
 coins_to_winner = 100
 PATROL_DISTANCE = 50
 
-[node name="Gamepad" parent="GUIS/ButtonsLayer" index="0"]
-max_speed = 700
+[node name="Gamepad" parent="GUIS" index="2"]
+max_speed = 800
 

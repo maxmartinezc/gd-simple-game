@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://levels/level.gd" type="Script" id=1]
 [ext_resource path="res://characters/ball/Ball.tscn" type="PackedScene" id=2]
@@ -8,47 +8,74 @@
 [ext_resource path="res://gui/gamepad/Gamepad.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 318.596, 13.969 )
+extents = Vector2( 318.596, 28.9851 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 355.483, 2.91089 )
 
 [node name="BaseLevel" type="Node2D"]
 script = ExtResource( 1 )
 __meta__ = {
-"_edit_horizontal_guides_": [ 641.103, 674.507, 608.653 ],
+"_edit_horizontal_guides_": [ 733.62 ],
 "_edit_vertical_guides_": [  ]
 }
 
-[node name="background" type="Sprite" parent="."]
-centered = false
+[node name="Limits" type="Node" parent="."]
 
-[node name="Objects" type="Node" parent="."]
-
-[node name="TopLimit" type="StaticBody2D" parent="."]
-position = Vector2( 320, 0 )
+[node name="Top" type="StaticBody2D" parent="Limits"]
+position = Vector2( 320, 50 )
+collision_layer = 8
 collision_mask = 2
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TopLimit"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Limits/Top"]
 shape = SubResource( 1 )
 
-[node name="Floor" type="StaticBody2D" parent="."]
-position = Vector2( 288.926, 736.18 )
+[node name="Bottom" type="StaticBody2D" parent="Limits" groups=[
+"platform",
+]]
+position = Vector2( 320, 736.954 )
 collision_layer = 4
 collision_mask = 2
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Floor"]
-position = Vector2( 0, -24 )
-polygon = PoolVector2Array( 357.073, 75.8195, 356.622, -628.334, 352.406, -628.334, 351.814, -19.5692, 63.2264, 12.275, 31.3823, 44.1191, -0.461823, 11.6115, -288.451, -19.6587, -288.967, -628.217, -294.472, -628.013, -294.762, 76.2287 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Limits/Bottom"]
+polygon = PoolVector2Array( -320.251, -31.1072, -288.901, -4.50739, 287.744, -3.55737, 321.766, -29.8214, 321.766, 33.8281, -320.429, 30.9781 )
+
+[node name="Left" type="StaticBody2D" parent="Limits"]
+position = Vector2( -2, 480 )
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Limits/Left"]
+position = Vector2( 0, -116.948 )
+rotation = 1.5708
+shape = SubResource( 3 )
+
+[node name="Right" type="StaticBody2D" parent="Limits"]
+position = Vector2( 642, 480 )
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Limits/Right"]
+position = Vector2( 0, -116.948 )
+rotation = 1.5708
+shape = SubResource( 3 )
+
+[node name="background" type="Sprite" parent="."]
+centered = false
+
+[node name="Objects" type="Node" parent="."]
 
 [node name="Ball" parent="." instance=ExtResource( 2 )]
 position = Vector2( 268.041, 448.426 )
 
 [node name="Hole" parent="." instance=ExtResource( 3 )]
-position = Vector2( 0, 60 )
+position = Vector2( 229.409, 82.0585 )
 PATROL_DISTANCE = 20
 
 [node name="GUIS" type="Node" parent="."]
@@ -65,8 +92,5 @@ layer = 20
 [node name="Pause" parent="GUIS/MenuLayer" instance=ExtResource( 5 )]
 visible = false
 
-[node name="ButtonsLayer" type="CanvasLayer" parent="GUIS"]
-layer = 15
-
-[node name="Gamepad" parent="GUIS/ButtonsLayer" instance=ExtResource( 6 )]
+[node name="Gamepad" parent="GUIS" instance=ExtResource( 6 )]
 

@@ -11,7 +11,7 @@ texture = ExtResource( 2 )
 
 [node name="Grass" parent="Objects" index="0" instance=ExtResource( 3 )]
 position = Vector2( 293.762, 336.241 )
-longitude = Vector2( 150, 0 )
+longitude = Vector2( -150, 0 )
 
 [node name="Grass2" parent="Objects" index="1" instance=ExtResource( 3 )]
 position = Vector2( 202.539, 599.688 )
@@ -19,7 +19,4 @@ longitude = Vector2( 150, 0 )
 
 [node name="Hole" parent="." index="5"]
 PATROL_DISTANCE = 10
-
-[node name="Gamepad" parent="GUIS/ButtonsLayer" index="0"]
-max_speed = 450
 
