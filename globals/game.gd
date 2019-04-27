@@ -1,44 +1,48 @@
 extends Node
 
 var _score = 0 setget , get_score
-const SCENE_LEVEL_FOLDER_PATH = "res://levels"
-const SCENE_PREFIX_NAME = SCENE_LEVEL_FOLDER_PATH + "/level*/Level*.tscn"
+const SCENE_WORLD_FOLDER_PATH = "res://worlds"
+const SCENE_PREFIX_NAME = SCENE_WORLD_FOLDER_PATH + "/world-x-/Level-y-.tscn"
 const SCENE_LEVEL_COMPLETE = "res://gui/level-complete/LevelComplete.tscn"
 
 onready var save_game = preload("res://globals/save.gd").new()
-var lvls = [] setget set_levels_data, get_levels_data
-var lvl_complete_index = {}
-var current_lvl = 1 setget , get_current_level
+var worlds = [] setget set_worlds_data, get_worlds_data
+var current_lvl_index = 0 setget , get_current_level
+var current_world_index = 0
 var lifes_count = 3 setget , get_lifes_count
 
 func _ready():
 	var data = generate_game_data() if save_game.is_new_game() else save_game.load_game()
 	_score = data.score
-	set_levels_data(data.lvls)
+	set_worlds_data(data.worlds)
 
-func load_level(lvl):
-	current_lvl = lvl
-	get_tree().change_scene(SCENE_PREFIX_NAME.replace("*", lvl))
+func load_level(world, lvl):
+	_set_current_world_index_and_level(world, lvl)
+	get_tree().change_scene(SCENE_PREFIX_NAME.replace("-x-", world).replace("-y-", lvl))
 
 func level_complete(coins):
-	# asignamos el indice del nivel completado
-	lvl_complete_index = get_current_level() - 1
 	# set stars in level
-	lvls[lvl_complete_index].stars = get_lifes_count()
+	worlds[current_world_index].levels[current_lvl_index].stars = get_lifes_count()
 	# increase score
-	lvls[lvl_complete_index].score = coins * get_lifes_count()
+	worlds[current_world_index].levels[current_lvl_index].score = coins * get_lifes_count()
+
 	#global score
 	_score += coins
-	# unlock next level (solo si existe)
-	if lvls.size() - 1 >= lvl_complete_index+1:
-		lvls[lvl_complete_index+1].open = true
+	
+	# unlock next world level (solo si existe)
+	if worlds[current_world_index].levels.size() - 1 > current_lvl_index:
+		# next level in world
+		worlds[current_world_index].levels[current_lvl_index + 1].open = true
+	# next world
+	elif worlds[current_world_index].size() - 1 > current_world_index:
+		worlds[current_world_index + 1].levels[0].open = true
 	else:
 		print("END GAME")
 
 	# save level complete
 	save_game.save_game({
 		"score": _score,
-		"lvls": lvls
+		"worlds": worlds
 	})
 	
 	#load select level
@@ -48,47 +52,83 @@ func get_score():
 	return _score
 
 func get_level_complete():
-	return lvls[lvl_complete_index]
+	return worlds[current_world_index].levels[current_lvl_index]
 	
 func generate_game_data():
-	var lvls_cfg = []
+	var worlds_cfg = []
 	
-	var total_levels = _count_levels()
-	# 0 .. total_levels - 1
-	for i in range(total_levels):
-		# solo el primer nivel esta abierto
-		lvls_cfg.push_back({ 
-			"id": i + 1, 
-			"open": true if i == 0 else false, 
-			"score": 0,
-			"stars": 0
-		})
-	var game_data = { "score": 0, "lvls": lvls_cfg}
-	return game_data
+	var worlds = _count_world_levels()
+	for item in worlds:
+		var lvls = []
+		#0 ... item.levels - 1
+		for l in range(item.levels):
+			# solo el primer nivel esta abierto
+			lvls.push_back({ 
+				"id": l + 1, 
+				"open": true if (l == 0 && item.world == 1) else false, 
+				"score": 0,
+				"stars": 0
+			})
+		worlds_cfg.push_back({ "world": item.world, "levels": lvls})
+	return { "score": 0, "worlds": worlds_cfg}
 
-func set_levels_data(data):
-	lvls = data
+func set_worlds_data(data):
+	worlds = data
 
-func get_levels_data():
-	return lvls
+func get_worlds_data():
+	return worlds
 	
 func get_current_level():
-	return current_lvl
+	# Se incrementa en 1 pq se utiliza el indice del array
+	return { "world" : worlds[current_world_index].world, "level" : worlds[current_world_index].levels[current_lvl_index].id}
 
-func _count_levels():
-	var count = 0
-	var dir = Directory.new()
-	if dir.open(SCENE_LEVEL_FOLDER_PATH) == OK:
-		dir.list_dir_begin()
-		var file_name = dir.get_next()
-		while (file_name != ""):
-			if dir.current_is_dir() && file_name.find("level",0):
-				count += 1
-			file_name = dir.get_next()
-	return count
+func _count_world_levels():
+	var world_lvls = []
+	var world_count = 0
+	var world = Directory.new()
+	# iteramos los worlds
+	var total_worlds = find_files(SCENE_WORLD_FOLDER_PATH, "world", true)
+	for i in range(total_worlds):
+		var total_lvls = find_files(SCENE_WORLD_FOLDER_PATH + "/world" + str(i + 1), "Level", false)
+		world_lvls.push_back({ "world": i + 1, "levels": total_lvls})
+	
+	return world_lvls
 	
 func reload_current_level():
-	load_level(current_lvl)
+	var data = get_current_level()
+	print(data)
+	load_level(data.world, data.level)
 	
 func get_lifes_count():
 	return lifes_count
+	
+func find_files(path, name, find_dir):
+	var count = 0
+	var dir = Directory.new()
+	if dir.open(path) == OK:
+		dir.list_dir_begin(true,true)
+		var file_name = dir.get_next()
+		while (file_name != ""):
+			if find_dir: 
+				if dir.current_is_dir() && file_name.find(name,0) > -1:
+					count += 1
+			elif file_name.find(name,0) > -1:
+				count += 1
+		
+			file_name = dir.get_next()
+	else:
+		print("An error occurred when trying to access the path.")
+	return count
+	
+func _set_current_world_index_and_level(world, level):
+	var found = false
+	for i in range(worlds.size()):
+		if worlds[i].world == world:
+			current_world_index = i
+			for l in range(worlds[i].levels.size()):
+				if worlds[i].levels[l].id == level:
+					current_lvl_index = l
+					found = true
+					break
+			if found:
+				break	

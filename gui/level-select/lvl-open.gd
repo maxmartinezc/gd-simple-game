@@ -8,14 +8,14 @@ func _ready():
 	$Stars/two.visible = false
 	$Stars/three.visible = false
 
-func initialize(lvl_data):
+func initialize(world, level):
 	# conectar evento pressed
-	$Button.connect("pressed", self, "_on_LevelButton_pressed", [lvl_data.id])
+	$Button.connect("pressed", self, "_on_LevelButton_pressed", [world, level.id])
 	# set image level number
-	$Button.set_normal_texture(load(TEXTURE_LEVELS.replace("*", lvl_data.id)))
+	$Button.set_normal_texture(load(TEXTURE_LEVELS.replace("*", level.id)))
 	# show stars
-	for i in range(lvl_data.stars):
+	for i in range(level.stars):
 		$Stars.get_children()[i].visible = true
 
-func _on_LevelButton_pressed(lvl):
-	game.load_level(lvl)
+func _on_LevelButton_pressed(world, lvl):
+	game.load_level(world,lvl)

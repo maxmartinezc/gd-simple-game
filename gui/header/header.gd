@@ -3,7 +3,8 @@ var _coins = 0
 
 func _ready():
 	set_visible(true)
-	$HBoxContainer/Bar3/Level/Background/Number.set_text(str(game.get_current_level()))
+	var world_level = game.get_current_level()
+	$HBoxContainer/Bar3/Level/Background/Number.set_text(str(world_level.world) + "-" + str(world_level.level))
 	$HBoxContainer/Bar1/Life/Background/Number.set_text(str(game.get_lifes_count()))
 	
 func _set_time_remaining(seconds_remaining):

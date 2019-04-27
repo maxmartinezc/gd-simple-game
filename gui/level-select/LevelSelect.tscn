@@ -1,12 +1,17 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://gui/level-select/level-select.gd" type="Script" id=1]
 [ext_resource path="res://gui/level-select/LvlBlockButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://gui/level-select/LvlOpen.tscn" type="PackedScene" id=3]
-[ext_resource path="res://gui/level-select/background.png" type="Texture" id=4]
-[ext_resource path="res://gui/level-select/home.png" type="Texture" id=5]
-[ext_resource path="res://gui/level-select/left.png" type="Texture" id=6]
-[ext_resource path="res://gui/level-select/right.png" type="Texture" id=7]
+[ext_resource path="res://gui/font/montserrat_black.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://gui/level-select/background.png" type="Texture" id=5]
+[ext_resource path="res://gui/level-select/home.png" type="Texture" id=6]
+[ext_resource path="res://gui/level-select/left.png" type="Texture" id=7]
+[ext_resource path="res://gui/level-select/right.png" type="Texture" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+size = 48
+font_data = ExtResource( 4 )
 
 [node name="LevelSelect" type="Control"]
 anchor_right = 1.0
@@ -21,6 +26,14 @@ margin_right = 640.0
 margin_bottom = 960.0
 color = Color( 0, 0, 0, 0.313726 )
 
+[node name="WorldLabel" type="Label" parent="."]
+anchor_right = 1.0
+margin_top = 30.0
+margin_bottom = 60.0
+custom_fonts/font = SubResource( 1 )
+align = 1
+valign = 2
+
 [node name="TextureRect" type="TextureRect" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
@@ -30,7 +43,7 @@ margin_left = -250.5
 margin_top = -350.5
 margin_right = 250.5
 margin_bottom = 350.5
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="GridContainer" type="GridContainer" parent="TextureRect"]
 anchor_right = 1.0
@@ -51,20 +64,20 @@ anchor_bottom = 1.0
 margin_left = -40.0
 margin_top = -81.0
 margin_right = 40.0
-texture_normal = ExtResource( 5 )
+texture_normal = ExtResource( 6 )
 
 [node name="PrevButton" type="TextureButton" parent="TextureRect"]
 margin_left = -40.0
 margin_top = 300.0
 margin_bottom = 360.0
-texture_normal = ExtResource( 6 )
+texture_normal = ExtResource( 7 )
 
 [node name="NextButton" type="TextureButton" parent="TextureRect"]
 margin_left = 480.0
 margin_top = 300.0
 margin_right = 540.0
 margin_bottom = 360.0
-texture_normal = ExtResource( 7 )
+texture_normal = ExtResource( 8 )
 
 [connection signal="pressed" from="TextureRect/HomeButton" to="." method="_on_HomeButton_pressed"]
 [connection signal="pressed" from="TextureRect/PrevButton" to="." method="_on_PrevButton_pressed"]
