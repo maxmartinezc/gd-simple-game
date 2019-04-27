@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://levels/BaseLevel.tscn" type="PackedScene" id=1]
+[ext_resource path="res://levels/level7/bg.png" type="Texture" id=2]
+[ext_resource path="res://levels/environments/cemetery-ground/CemeteryGround.tscn" type="PackedScene" id=3]
+[ext_resource path="res://levels/environments/crate/Crate.tscn" type="PackedScene" id=4]
+
+[node name="Level7" instance=ExtResource( 1 )]
+
+[node name="CollisionPolygon2D" parent="Limits/Bottom" index="0"]
+polygon = PoolVector2Array( 322.746, -17.4995, 322.746, 62.2355, -322.851, 63.0929, -322.851, -51.7941, -317.707, -46.65, -309.29, -45.2992, -303.875, -67.8615, -312.628, -73.7325, -311.007, -80.7571, -303.442, -78.5957, -300.74, -93.7256, -293.716, -89.4028, -296.45, -76.6303, -288.852, -71.5711, -290.977, -64.2877, -298.861, -66.9156, -302.072, -45.0167, -299.737, -42.9727, -286.013, -41.8048, -253.603, -34.7971, -228.784, -28.9574, -195.79, -21.0738, -158.415, -12.0222, -157.539, -16.11, -154.62, -16.402, -151.992, -47.0605, -149.364, -54.3602, -144.692, -58.156, -137.1, -57.28, -133.889, -52.3163, -130.385, -42.0968, -132.429, -11.4382, -129.801, -11.7302, -130.093, -3.26263, -104.69, 5.49695, -83.375, 11.9207, -57.3882, 18.6363, -33.7373, 26.5199, -10.1248, 31.3625, -10.623, 1.3017, -20.0897, 3.1286, -20.588, -6.33807, -12.2839, -7.8692, -12.2839, -22.4844, -7.13535, -23.3148, -5.97278, -9.53003, 2.16522, -10.5266, 3.82605, -1.89026, -5.30844, 0.600952, -3.78931, 32.4457, 27.3979, 38.257, 52.1927, 40.7752, 75.8253, 41.55, 96.679, 39.2255, 96.2916, 31.6708, 101.134, 31.6708, 100.941, -9.00812, 107.139, -21.2119, 112.176, -24.3112, 117.6, -24.6986, 124.767, -18.3062, 129.029, -6.87732, 128.641, 30.5086, 131.353, 31.4771, 131.934, 36.5135, 163.509, 30.896, 186.173, 24.891, 186.948, 14.4307, 190.047, 13.4622, 187.722, -14.6257, 190.061, -24.048, 193.731, -30.1652, 199.848, -32.0003, 206.373, -27.5144, 209.024, -19.9699, 210.655, -4.67706, 211.675, 9.80017, 213.51, 10.0041, 214.733, 16.529, 245.727, 5.31427, 277.128, -6.92004, 313.997, -18.3387 )
+
+[node name="background" parent="." index="1"]
+position = Vector2( 0, 1.58667 )
+texture = ExtResource( 2 )
+
+[node name="CemeteryGround" parent="Objects" index="0" instance=ExtResource( 3 )]
+position = Vector2( 284.82, 350.046 )
+type = 1
+
+[node name="Crate" parent="Objects" index="1" instance=ExtResource( 4 )]
+modulate = Color( 1, 1, 1, 0.356863 )
+position = Vector2( 464.916, 615.202 )
+
+[node name="Crate2" parent="Objects" index="2" instance=ExtResource( 4 )]
+modulate = Color( 1, 1, 1, 0.356863 )
+position = Vector2( 95.7684, 578.527 )
+
+[node name="Crate5" parent="Objects" index="3" instance=ExtResource( 4 )]
+modulate = Color( 1, 1, 1, 0.356863 )
+position = Vector2( 55.3872, 578.4 )
+
+[node name="Crate3" parent="Objects" index="4" instance=ExtResource( 4 )]
+modulate = Color( 1, 1, 1, 0.356863 )
+position = Vector2( 597.298, 685.781 )
+
+[node name="Ball" parent="." index="3"]
+speed = 300
+enabled_light = true
+
+[node name="Hole" parent="." index="4"]
+longitude = Vector2( 0, 0 )
+type = 0
+

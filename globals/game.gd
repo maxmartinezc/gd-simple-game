@@ -9,6 +9,7 @@ onready var save_game = preload("res://globals/save.gd").new()
 var lvls = [] setget set_levels_data, get_levels_data
 var lvl_complete_index = {}
 var current_lvl = 1 setget , get_current_level
+var lifes_count = 3 setget , get_lifes_count
 
 func _ready():
 	var data = generate_game_data() if save_game.is_new_game() else save_game.load_game()
@@ -19,15 +20,15 @@ func load_level(lvl):
 	current_lvl = lvl
 	get_tree().change_scene(SCENE_PREFIX_NAME.replace("*", lvl))
 
-func level_complete(score, stars):
+func level_complete(coins):
 	# asignamos el indice del nivel completado
 	lvl_complete_index = get_current_level() - 1
 	# set stars in level
-	lvls[lvl_complete_index].stars = stars
+	lvls[lvl_complete_index].stars = get_lifes_count()
 	# increase score
-	lvls[lvl_complete_index].score = score
+	lvls[lvl_complete_index].score = coins * get_lifes_count()
 	#global score
-	_score += score
+	_score += coins
 	# unlock next level (solo si existe)
 	if lvls.size() - 1 >= lvl_complete_index+1:
 		lvls[lvl_complete_index+1].open = true
@@ -88,3 +89,6 @@ func _count_levels():
 	
 func reload_current_level():
 	load_level(current_lvl)
+	
+func get_lifes_count():
+	return lifes_count

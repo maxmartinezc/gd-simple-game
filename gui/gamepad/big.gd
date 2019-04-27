@@ -1,6 +1,6 @@
 extends Sprite
 
-const RADIUS = 75
+const RADIUS = 100
 const SMALL_RADIUS = 35
 
 var stick_pos
@@ -21,6 +21,7 @@ func _input(event):
 				$"../".stick_vector = Vector2()
 				$"../".stick_angle = 0
 				$"../".stick_speed = 0
+				$"../".stick_speed_percentage = 0
 	
 	if evt_index != -1 && event is InputEventScreenDrag:
 		var dist = stick_pos.distance_to(event.position)
@@ -33,6 +34,9 @@ func _input(event):
 		$"../".stick_vector = vect
 		$"../".stick_angle = ang
 		$"../".stick_speed = dist
+		$"../".stick_speed_percentage = _calculate_percentage(dist) 
 		$Small.position = vect * dist
 		
-		
+func _calculate_percentage(v):
+	var amount = float(v)/RADIUS * 100
+	return round(amount + SMALL_RADIUS)

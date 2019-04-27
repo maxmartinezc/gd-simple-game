@@ -1,11 +1,16 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://gui/header/header.gd" type="Script" id=1]
 [ext_resource path="res://gui/header/score_bg.png" type="Texture" id=2]
 [ext_resource path="res://gui/font/montserrat_black.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://gui/header/life.png" type="Texture" id=4]
 
 [sub_resource type="DynamicFont" id=1]
-size = 24
+size = 32
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 50
 font_data = ExtResource( 3 )
 
 [node name="Header" type="MarginContainer"]
@@ -18,24 +23,35 @@ __meta__ = {
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 margin_right = 640.0
-margin_bottom = 40.0
+margin_bottom = 50.0
+alignment = 1
 
 [node name="Bar1" type="HBoxContainer" parent="HBoxContainer"]
-margin_right = 496.0
-margin_bottom = 40.0
+margin_right = 246.0
+margin_bottom = 50.0
 size_flags_horizontal = 3
 
-[node name="Score" type="MarginContainer" parent="HBoxContainer/Bar1"]
-margin_right = 180.0
-margin_bottom = 40.0
+[node name="Life" type="MarginContainer" parent="HBoxContainer/Bar1"]
+margin_right = 80.0
+margin_bottom = 50.0
 
-[node name="Background" type="NinePatchRect" parent="HBoxContainer/Bar1/Score"]
-margin_right = 180.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 180, 40 )
+[node name="Background" type="NinePatchRect" parent="HBoxContainer/Bar1/Life"]
+margin_right = 80.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 80, 50 )
 texture = ExtResource( 2 )
 
-[node name="Title" type="Label" parent="HBoxContainer/Bar1/Score/Background"]
+[node name="Number" type="Label" parent="HBoxContainer/Bar1/Life/Background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -10.0
+custom_fonts/font = SubResource( 1 )
+text = "3"
+align = 2
+valign = 1
+
+[node name="Title" type="Label" parent="HBoxContainer/Bar1/Life/Background"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 10.0
@@ -43,30 +59,56 @@ custom_fonts/font = SubResource( 1 )
 text = "Score"
 valign = 1
 
-[node name="Number" type="Label" parent="HBoxContainer/Bar1/Score/Background"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_fonts/font = SubResource( 1 )
-text = "10"
-align = 2
-valign = 1
+[node name="Icon" type="TextureRect" parent="HBoxContainer/Bar1/Life/Background"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 4 )
 
 [node name="Bar2" type="HBoxContainer" parent="HBoxContainer"]
-margin_left = 500.0
-margin_right = 640.0
-margin_bottom = 40.0
+margin_left = 250.0
+margin_right = 496.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 100, 0 )
+size_flags_horizontal = 3
 
-[node name="Level" type="MarginContainer" parent="HBoxContainer/Bar2"]
-margin_right = 140.0
-margin_bottom = 40.0
+[node name="Time" type="MarginContainer" parent="HBoxContainer/Bar2"]
+margin_right = 130.0
+margin_bottom = 50.0
 
-[node name="Background" type="NinePatchRect" parent="HBoxContainer/Bar2/Level"]
-margin_right = 140.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 140, 40 )
+[node name="Background" type="NinePatchRect" parent="HBoxContainer/Bar2/Time"]
+margin_right = 130.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 130, 50 )
 texture = ExtResource( 2 )
 
-[node name="Title" type="Label" parent="HBoxContainer/Bar2/Level/Background"]
+[node name="Seconds" type="Label" parent="HBoxContainer/Bar2/Time/Background"]
+margin_left = 17.0
+margin_top = -6.0
+margin_right = 117.0
+margin_bottom = 56.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.992157, 0.435294, 0.435294, 1 )
+text = "0"
+align = 1
+
+[node name="Bar3" type="HBoxContainer" parent="HBoxContainer"]
+margin_left = 500.0
+margin_right = 640.0
+margin_bottom = 50.0
+
+[node name="Level" type="MarginContainer" parent="HBoxContainer/Bar3"]
+margin_right = 140.0
+margin_bottom = 50.0
+
+[node name="Background" type="NinePatchRect" parent="HBoxContainer/Bar3/Level"]
+margin_right = 140.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 140, 50 )
+texture = ExtResource( 2 )
+
+[node name="Title" type="Label" parent="HBoxContainer/Bar3/Level/Background"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 10.0
@@ -74,7 +116,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Level"
 valign = 1
 
-[node name="Number" type="Label" parent="HBoxContainer/Bar2/Level/Background"]
+[node name="Number" type="Label" parent="HBoxContainer/Bar3/Level/Background"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = SubResource( 1 )

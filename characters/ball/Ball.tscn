@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://characters/ball/ball.gd" type="Script" id=1]
 [ext_resource path="res://characters/ball/cannon.png" type="Texture" id=2]
+[ext_resource path="res://characters/ball/2DLight.png" type="Texture" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 17.4314
@@ -22,6 +23,11 @@ texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
+
+[node name="Light2D" type="Light2D" parent="."]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+shadow_enabled = true
 
 [connection signal="body_shape_entered" from="." to="." method="_on_Ball_body_shape_entered"]
 [connection signal="body_shape_exited" from="." to="." method="_on_Ball_body_shape_exited"]

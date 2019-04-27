@@ -3,6 +3,7 @@ extends Node2D
 var stick_speed = 0
 var stick_angle = 0
 var stick_vector = Vector2()
+var stick_speed_percentage = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

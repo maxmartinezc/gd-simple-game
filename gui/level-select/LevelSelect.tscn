@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://gui/level-select/level-select.gd" type="Script" id=1]
 [ext_resource path="res://gui/level-select/LvlBlockButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://gui/level-select/LvlOpen.tscn" type="PackedScene" id=3]
 [ext_resource path="res://gui/level-select/background.png" type="Texture" id=4]
+[ext_resource path="res://gui/level-select/home.png" type="Texture" id=5]
+[ext_resource path="res://gui/level-select/left.png" type="Texture" id=6]
+[ext_resource path="res://gui/level-select/right.png" type="Texture" id=7]
 
 [node name="LevelSelect" type="Control"]
 anchor_right = 1.0
@@ -11,6 +14,7 @@ anchor_bottom = 1.0
 script = ExtResource( 1 )
 lvl_block = ExtResource( 2 )
 lvl_open = ExtResource( 3 )
+path_scene_title_screen = "res://gui/title-screen/TitleScreen.tscn"
 
 [node name="BlackOverlay" type="ColorRect" parent="."]
 margin_right = 640.0
@@ -39,3 +43,29 @@ custom_constants/vseparation = 20
 custom_constants/hseparation = 10
 columns = 5
 
+[node name="HomeButton" type="TextureButton" parent="TextureRect"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -40.0
+margin_top = -81.0
+margin_right = 40.0
+texture_normal = ExtResource( 5 )
+
+[node name="PrevButton" type="TextureButton" parent="TextureRect"]
+margin_left = -40.0
+margin_top = 300.0
+margin_bottom = 360.0
+texture_normal = ExtResource( 6 )
+
+[node name="NextButton" type="TextureButton" parent="TextureRect"]
+margin_left = 480.0
+margin_top = 300.0
+margin_right = 540.0
+margin_bottom = 360.0
+texture_normal = ExtResource( 7 )
+
+[connection signal="pressed" from="TextureRect/HomeButton" to="." method="_on_HomeButton_pressed"]
+[connection signal="pressed" from="TextureRect/PrevButton" to="." method="_on_PrevButton_pressed"]
+[connection signal="pressed" from="TextureRect/NextButton" to="." method="_on_NextButton_pressed"]

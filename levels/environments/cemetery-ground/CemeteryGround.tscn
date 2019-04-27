@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://levels/environments/PlatformBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://levels/environments/cemetery-ground/body.png" type="Texture" id=2]
+
+[node name="CemeteryGround" instance=ExtResource( 1 )]
+
+[node name="Body" parent="." index="0"]
+texture = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" parent="." index="2"]
+polygon = PoolVector2Array( -60.4923, -15.9445, 59.5142, -15.934, 61.7673, -12.4292, 62.5183, -7.42235, 60.2652, -2.66582, 54.7577, 1.33967, 47.2474, 2.0907, 43.9929, 7.09758, 33.2281, 12.6051, 22.213, 14.8582, 15.2034, 13.3562, 10.9475, 10.8527, 0.683456, 14.1072, -5.82547, 12.8555, -7.82822, 11.6038, -11.333, 11.8541, -16.3399, 12.8555, -26.8543, 14.1072, -44.3784, 7.84861, -48.6342, 1.84036, -53.1404, 1.84036, -58.1473, -0.162388, -62.6535, -4.91891, -63.1541, -9.4251, -62.6535, -15.183 )
+
