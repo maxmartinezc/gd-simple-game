@@ -1,4 +1,5 @@
 extends Control
+export (String) var path_scene_select_level
 
 func _ready():
 	set_visible(false)
@@ -21,4 +22,4 @@ func _on_RestartButton_pressed():
 
 func _on_ExitButton_pressed():
 	_pause()
-	get_tree().change_scene("res://levels/LevelSpawner.tscn")
+	get_tree().change_scene(path_scene_select_level)

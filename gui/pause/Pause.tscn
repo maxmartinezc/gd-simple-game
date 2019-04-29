@@ -6,11 +6,12 @@
 [ext_resource path="res://gui/pause/restart-button.png" type="Texture" id=4]
 [ext_resource path="res://gui/pause/exit-button.png" type="Texture" id=5]
 
-[node name="GameOver" type="Control"]
+[node name="Pause" type="Control"]
 pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
+path_scene_select_level = "res://gui/level-select/LevelSelect.tscn"
 
 [node name="BlackOverlay" type="ColorRect" parent="."]
 margin_right = 640.0

@@ -9,7 +9,6 @@ signal go_in(coins_to_winner)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	connect("go_in", game, "level_complete")
-	emit_signal("go_in", coins_to_winner)
 	var screen_width = get_viewport_rect().size.x
 	set_global_position(Vector2((screen_width/2) - longitude.x/2, position.y))
 	move()

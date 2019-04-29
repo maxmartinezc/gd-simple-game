@@ -56,6 +56,7 @@ pointing/emulate_touch_from_mouse=true
 2d_physics/layer_2="ball"
 2d_physics/layer_3="floor"
 2d_physics/layer_4="platform"
+2d_physics/layer_5="object"
 
 [rendering]
 

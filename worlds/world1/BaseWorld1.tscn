@@ -1,9 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://worlds/BaseWorld.tscn" type="PackedScene" id=1]
 [ext_resource path="res://worlds/world1/bg.png" type="Texture" id=2]
-[ext_resource path="res://worlds/environments/grass/Grass.tscn" type="PackedScene" id=3]
-
 
 [node name="BaseWorld1" instance=ExtResource( 1 )]
 
@@ -12,9 +10,6 @@ collision_mask = 10
 
 [node name="Background" parent="." index="1"]
 texture = ExtResource( 2 )
-
-[node name="Grass" parent="Objects" index="0" instance=ExtResource( 3 )]
-position = Vector2( 363.136, 447.613 )
 
 [node name="Ball" parent="." index="3"]
 position = Vector2( 263.834, 632.756 )

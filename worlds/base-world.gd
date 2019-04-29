@@ -16,7 +16,3 @@ func _on_LevelTimeOutTimer_timeout():
 
 func _finished_level():
 	get_tree().change_scene(path_scene_game_over)
-
-
-func _on_CemeteryGround3_body_shape_entered(body_id, body, body_shape, local_shape):
-	pass # Replace with function body.
