@@ -5,7 +5,12 @@ func _ready():
 	set_visible(true)
 	var world_level = game.get_current_level()
 	$HBoxContainer/Bar3/Level/Background/Number.set_text(str(world_level.world) + "-" + str(world_level.level))
-	$HBoxContainer/Bar1/Life/Background/Number.set_text(str(game.get_lifes_count()))
+	$HBoxContainer/Bar1/TextureProgress.max_value = game.get_max_health()
+	$HBoxContainer/Bar1/TextureProgress.value = game.get_max_health()
 	
-func _set_time_remaining(seconds_remaining):
+func set_time_remaining(seconds_remaining):
 	$HBoxContainer/Bar2/Time/Background/Seconds.set_text(str(seconds_remaining))
+	
+func set_life_bar_value(new_health):
+	$HBoxContainer/Bar1/TextureProgress.value = new_health
+

@@ -1,24 +1,25 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://gui/header/header.gd" type="Script" id=1]
-[ext_resource path="res://gui/header/score_bg.png" type="Texture" id=2]
-[ext_resource path="res://gui/font/montserrat_black.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://gui/header/life.png" type="Texture" id=4]
+[ext_resource path="res://gui/header/lifebar_bg.png" type="Texture" id=2]
+[ext_resource path="res://gui/header/lifebar_fill.png" type="Texture" id=3]
+[ext_resource path="res://gui/header/score_bg.png" type="Texture" id=4]
+[ext_resource path="res://gui/font/montserrat_black.ttf" type="DynamicFontData" id=5]
 
 [sub_resource type="DynamicFont" id=1]
-size = 32
-font_data = ExtResource( 3 )
+size = 50
+font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 50
-font_data = ExtResource( 3 )
+size = 32
+font_data = ExtResource( 5 )
 
 [node name="Header" type="MarginContainer"]
 margin_right = 640.0
 margin_bottom = 40.0
 script = ExtResource( 1 )
 __meta__ = {
-"_edit_vertical_guides_": [ 600.236 ]
+"_edit_vertical_guides_": [ 600.236, 224.332, 249.196, 375.231 ]
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
@@ -31,40 +32,12 @@ margin_right = 236.0
 margin_bottom = 50.0
 size_flags_horizontal = 3
 
-[node name="Life" type="MarginContainer" parent="HBoxContainer/Bar1"]
-margin_right = 90.0
+[node name="TextureProgress" type="TextureProgress" parent="HBoxContainer/Bar1"]
+margin_right = 200.0
 margin_bottom = 50.0
-
-[node name="Background" type="NinePatchRect" parent="HBoxContainer/Bar1/Life"]
-margin_right = 90.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 90, 50 )
-texture = ExtResource( 2 )
-
-[node name="Number" type="Label" parent="HBoxContainer/Bar1/Life/Background"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_right = -10.0
-custom_fonts/font = SubResource( 1 )
-text = "3"
-align = 2
-valign = 1
-
-[node name="Title" type="Label" parent="HBoxContainer/Bar1/Life/Background"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 10.0
-custom_fonts/font = SubResource( 1 )
-text = "Score"
-valign = 1
-
-[node name="Icon" type="TextureRect" parent="HBoxContainer/Bar1/Life/Background"]
-margin_left = 5.0
-margin_top = 5.0
-margin_right = 40.0
-margin_bottom = 40.0
-texture = ExtResource( 4 )
+value = 100.0
+texture_under = ExtResource( 2 )
+texture_progress = ExtResource( 3 )
 
 [node name="Bar2" type="HBoxContainer" parent="HBoxContainer"]
 margin_left = 240.0
@@ -81,14 +54,14 @@ margin_bottom = 50.0
 margin_right = 130.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 130, 50 )
-texture = ExtResource( 2 )
+texture = ExtResource( 4 )
 
 [node name="Seconds" type="Label" parent="HBoxContainer/Bar2/Time/Background"]
 margin_left = 17.0
 margin_top = -6.0
 margin_right = 117.0
 margin_bottom = 56.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.992157, 0.435294, 0.435294, 1 )
 text = "0"
 align = 1
@@ -106,20 +79,19 @@ margin_bottom = 50.0
 margin_right = 160.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 160, 50 )
-texture = ExtResource( 2 )
+texture = ExtResource( 4 )
 
 [node name="Title" type="Label" parent="HBoxContainer/Bar3/Level/Background"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 10.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Level"
 valign = 1
 
 [node name="Number" type="Label" parent="HBoxContainer/Bar3/Level/Background"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "1"
 align = 2
 valign = 1

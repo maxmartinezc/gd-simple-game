@@ -17,5 +17,4 @@ func _ready():
 func _on_Mushroom_body_entered(body):
 	var ball = body
 	var ball_speed = ball.speed
-	print(ball_speed + ball.speed * trampolin_jump_percentage/100)
 	ball.shoot(ball_speed + (ball.speed * trampolin_jump_percentage/100))

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://worlds/base-world.gd" type="Script" id=1]
 [ext_resource path="res://characters/ball/Ball.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://gui/header/Header.tscn" type="PackedScene" id=4]
 [ext_resource path="res://gui/pause/Pause.tscn" type="PackedScene" id=5]
 [ext_resource path="res://gui/gamepad/Gamepad.tscn" type="PackedScene" id=6]
+[ext_resource path="res://worlds/camera-shaker.gd" type="Script" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 318.596, 28.9851 )
@@ -19,7 +20,6 @@ __meta__ = {
 "_edit_horizontal_guides_": [ 733.62 ],
 "_edit_vertical_guides_": [  ]
 }
-path_scene_game_over = "res://gui/game-over/GameOver.tscn"
 
 [node name="Limits" type="Node" parent="."]
 
@@ -73,6 +73,8 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="Enemies" type="Node" parent="."]
+
 [node name="Objects" type="Node" parent="."]
 
 [node name="Ball" parent="." instance=ExtResource( 2 )]
@@ -99,4 +101,15 @@ visible = false
 
 [node name="LevelTimeOutTimer" type="Timer" parent="."]
 
+[node name="Camera2D" type="Camera2D" parent="."]
+editor/display_folded = true
+position = Vector2( 320, 480 )
+current = true
+
+[node name="Shaker" type="Node" parent="Camera2D"]
+script = ExtResource( 7 )
+
+[node name="Tween" type="Tween" parent="Camera2D/Shaker"]
+
 [connection signal="timeout" from="LevelTimeOutTimer" to="." method="_on_LevelTimeOutTimer_timeout"]
+[connection signal="tween_completed" from="Camera2D/Shaker/Tween" to="Camera2D/Shaker" method="_on_Tween_tween_completed"]

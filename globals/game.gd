@@ -4,12 +4,14 @@ var _score = 0 setget , get_score
 const SCENE_WORLD_FOLDER_PATH = "res://worlds"
 const SCENE_PREFIX_NAME = SCENE_WORLD_FOLDER_PATH + "/world-x-/Level-y-.tscn"
 const SCENE_LEVEL_COMPLETE = "res://gui/level-complete/LevelComplete.tscn"
+const SCENE_GAME_OVER = "res://gui/game-over/GameOver.tscn"
+const MAX_HEALTH = 100
 
 onready var save_game = preload("res://globals/save.gd").new()
 var worlds = [] setget set_worlds_data, get_worlds_data
 var current_lvl_index = 0 setget , get_current_level
 var current_world_index = 0
-var lifes_count = 3 setget , get_lifes_count
+
 
 func _ready():
 	var data = generate_game_data() if save_game.is_new_game() else save_game.load_game()
@@ -22,9 +24,9 @@ func load_level(world, lvl):
 
 func level_complete(coins):
 	# set stars in level
-	worlds[current_world_index].levels[current_lvl_index].stars = get_lifes_count()
+	worlds[current_world_index].levels[current_lvl_index].stars = 3 #get_life()
 	# increase score
-	worlds[current_world_index].levels[current_lvl_index].score = coins * get_lifes_count()
+	worlds[current_world_index].levels[current_lvl_index].score = coins * 3 #get_life()
 
 	#global score
 	_score += coins
@@ -96,11 +98,7 @@ func _count_world_levels():
 	
 func reload_current_level():
 	var data = get_current_level()
-	print(data)
 	load_level(data.world, data.level)
-	
-func get_lifes_count():
-	return lifes_count
 	
 func find_files(path, name, find_dir):
 	var count = 0
@@ -131,4 +129,10 @@ func _set_current_world_index_and_level(world, level):
 					found = true
 					break
 			if found:
-				break	
+				break
+
+func get_max_health():
+	return MAX_HEALTH
+
+func game_over():
+	get_tree().change_scene(SCENE_GAME_OVER)

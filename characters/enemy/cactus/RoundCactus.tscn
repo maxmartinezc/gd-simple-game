@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://characters/enemy/BaseEnemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://characters/enemy/cactus/round.png" type="Texture" id=2]
+
+[node name="RoundCactus" instance=ExtResource( 1 )]
+damage = 15
+
+[node name="Body" parent="." index="0"]
+texture = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" parent="." index="1"]
+polygon = PoolVector2Array( -26.4958, 22.5141, -29.7153, 15.8603, -30.1446, 7.70407, -29.93, 3.84058, -35.2959, 0.406364, -29.0714, -0.88147, -26.7104, -7.10599, -23.7055, -11.6134, -20.0566, -14.833, -20.4859, -17.194, -18.3395, -16.7647, -12.115, -19.7697, -8.03684, -21.4868, -0.309853, -22.56, 6.55858, -21.916, 11.7099, -20.1989, 16.6466, -17.6233, 20.0808, -14.4037, 26.52, -6.24743, 28.881, 1.47955, 29.7395, 6.63088, 29.5249, 8.77726, 33.8177, 10.4944, 33.8177, 11.9968, 29.0956, 13.07, 28.0224, 17.5774, 26.0907, 22.5141 )
+

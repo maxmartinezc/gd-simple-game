@@ -11,15 +11,15 @@ collision_mask = 10
 [node name="Background" parent="." index="1"]
 texture = ExtResource( 2 )
 
-[node name="Ball" parent="." index="3"]
+[node name="Ball" parent="." index="4"]
 position = Vector2( 263.834, 632.756 )
 speed = 600
 
-[node name="Hole" parent="." index="4"]
+[node name="Hole" parent="." index="5"]
 position = Vector2( 32.2937, 86.2054 )
 coins_to_winner = 100
 speed = 5
 
-[node name="GUIS" parent="." index="5"]
+[node name="GUIS" parent="." index="6"]
 editor/display_folded = true
 

@@ -25,6 +25,7 @@ margin_bottom = 161.0
 texture = ExtResource( 2 )
 
 [node name="Buttons" type="VBoxContainer" parent="Menu"]
+editor/display_folded = true
 margin_top = 165.0
 margin_right = 520.0
 margin_bottom = 782.0
