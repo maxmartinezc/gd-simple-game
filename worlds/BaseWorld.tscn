@@ -5,11 +5,9 @@
 [ext_resource path="res://characters/hole/Hole.tscn" type="PackedScene" id=3]
 [ext_resource path="res://gui/header/Header.tscn" type="PackedScene" id=4]
 [ext_resource path="res://gui/pause/Pause.tscn" type="PackedScene" id=5]
-[ext_resource path="res://gui/gamepad/Gamepad.tscn" type="PackedScene" id=6]
-[ext_resource path="res://worlds/camera-shaker.gd" type="Script" id=7]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 318.596, 28.9851 )
+[ext_resource path="res://gui/game-over/GameOver.tscn" type="PackedScene" id=6]
+[ext_resource path="res://gui/gamepad/Gamepad.tscn" type="PackedScene" id=7]
+[ext_resource path="res://worlds/camera-shaker.gd" type="Script" id=8]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 355.483, 2.91089 )
@@ -21,18 +19,29 @@ __meta__ = {
 "_edit_vertical_guides_": [  ]
 }
 
+[node name="Background" type="Sprite" parent="."]
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
 [node name="Limits" type="Node" parent="."]
 
-[node name="Top" type="StaticBody2D" parent="Limits"]
-position = Vector2( 320, 50 )
+[node name="Top" type="RigidBody2D" parent="Limits"]
+position = Vector2( -1, -41.9904 )
 collision_layer = 8
 collision_mask = 2
+mode = 3
+contacts_reported = 1
+contact_monitor = true
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Limits/Top"]
-shape = SubResource( 1 )
+[node name="Sprite" type="Sprite" parent="Limits/Top"]
+position = Vector2( 321.912, 104.971 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Limits/Top"]
 
 [node name="Bottom" type="StaticBody2D" parent="Limits" groups=[
 "platform",
@@ -67,12 +76,6 @@ position = Vector2( 0, -116.948 )
 rotation = 1.5708
 shape = SubResource( 2 )
 
-[node name="Background" type="Sprite" parent="."]
-centered = false
-__meta__ = {
-"_edit_lock_": true
-}
-
 [node name="Enemies" type="Node" parent="."]
 
 [node name="Objects" type="Node" parent="."]
@@ -84,20 +87,24 @@ position = Vector2( 268.041, 448.426 )
 position = Vector2( 23.9492, 83.1921 )
 
 [node name="GUIS" type="Node" parent="."]
+editor/display_folded = true
 
 [node name="LifeLayer" type="CanvasLayer" parent="GUIS"]
+editor/display_folded = true
 layer = 15
 
 [node name="Header" parent="GUIS/LifeLayer" instance=ExtResource( 4 )]
 
 [node name="MenuLayer" type="CanvasLayer" parent="GUIS"]
-editor/display_folded = true
 layer = 20
 
 [node name="Pause" parent="GUIS/MenuLayer" instance=ExtResource( 5 )]
 visible = false
 
-[node name="Gamepad" parent="GUIS" instance=ExtResource( 6 )]
+[node name="GameOver" parent="GUIS/MenuLayer" instance=ExtResource( 6 )]
+visible = false
+
+[node name="Gamepad" parent="GUIS" instance=ExtResource( 7 )]
 
 [node name="LevelTimeOutTimer" type="Timer" parent="."]
 
@@ -107,9 +114,9 @@ position = Vector2( 320, 480 )
 current = true
 
 [node name="Shaker" type="Node" parent="Camera2D"]
-script = ExtResource( 7 )
+script = ExtResource( 8 )
 
 [node name="Tween" type="Tween" parent="Camera2D/Shaker"]
-
+[connection signal="body_entered" from="Limits/Top" to="." method="_on_Top_body_entered"]
 [connection signal="timeout" from="LevelTimeOutTimer" to="." method="_on_LevelTimeOutTimer_timeout"]
 [connection signal="tween_completed" from="Camera2D/Shaker/Tween" to="Camera2D/Shaker" method="_on_Tween_tween_completed"]

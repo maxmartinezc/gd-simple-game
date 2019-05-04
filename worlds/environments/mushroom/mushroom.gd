@@ -1,9 +1,7 @@
 extends "res://worlds/environments/object-base.gd"
 
 export (int) var trampolin_jump_percentage = 10
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+const MIN_SPEED = 300
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,6 +13,8 @@ func _ready():
 
 
 func _on_Mushroom_body_entered(body):
+	SoundFx.play_fx("Throw")
 	var ball = body
-	var ball_speed = ball.speed
-	ball.shoot(ball_speed + (ball.speed * trampolin_jump_percentage/100))
+	var shoot_speed = ball.speed + (ball.speed * trampolin_jump_percentage/100)
+	print(shoot_speed)
+	ball.shoot(shoot_speed)

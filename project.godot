@@ -22,6 +22,7 @@ config/icon="res://icon.png"
 [autoload]
 
 game="*res://globals/game.gd"
+SoundFx="*res://gui/sounds/SoundFx.tscn"
 
 [display]
 

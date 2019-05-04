@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/throw.wav-c720f899d0c56fae389ebab8ae17f218.sample"
+
+[deps]
+
+source_file="res://gui/sounds/fx/throw.wav"
+dest_files=[ "res://.import/throw.wav-c720f899d0c56fae389ebab8ae17f218.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

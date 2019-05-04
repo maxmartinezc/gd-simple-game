@@ -6,9 +6,6 @@
 
 [node name="Level1" index="0" instance=ExtResource( 1 )]
 
-[node name="Limits" parent="." index="0"]
-editor/display_folded = true
-
 [node name="Enemies" parent="." index="2"]
 editor/display_folded = true
 
@@ -47,5 +44,11 @@ rotation = 0.226729
 speed = 400
 
 [node name="GUIS" parent="." index="6"]
+editor/display_folded = true
+
+[node name="LifeLayer" parent="GUIS" index="0"]
+editor/display_folded = false
+
+[node name="MenuLayer" parent="GUIS" index="1"]
 editor/display_folded = true
 

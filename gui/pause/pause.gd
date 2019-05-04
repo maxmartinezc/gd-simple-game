@@ -17,9 +17,11 @@ func _pause():
 	visible = new_pause_state
 
 func _on_RestartButton_pressed():
-	_pause()
+	SoundFx.play_fx("Switchy")
+	_pause()	
 	get_tree().reload_current_scene()
 
 func _on_ExitButton_pressed():
+	SoundFx.play_fx("Switchy")
 	_pause()
 	get_tree().change_scene(path_scene_select_level)

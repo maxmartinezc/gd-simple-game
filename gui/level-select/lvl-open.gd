@@ -18,4 +18,5 @@ func initialize(world, level):
 		$Stars.get_children()[i].visible = true
 
 func _on_LevelButton_pressed(world, lvl):
+	SoundFx.play_fx("Switchy")
 	game.load_level(world,lvl)

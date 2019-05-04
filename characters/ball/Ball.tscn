@@ -33,6 +33,5 @@ shadow_enabled = true
 
 [node name="Health" type="Node2D" parent="."]
 script = ExtResource( 4 )
-
 [connection signal="body_shape_entered" from="." to="." method="_on_Ball_body_shape_entered"]
 [connection signal="body_shape_exited" from="." to="." method="_on_Ball_body_shape_exited"]

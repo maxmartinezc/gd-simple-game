@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/switchy.wav-32dfee9d769131fe477b5e158bdafd32.sample"
+
+[deps]
+
+source_file="res://gui/sounds/fx/switchy.wav"
+dest_files=[ "res://.import/switchy.wav-32dfee9d769131fe477b5e158bdafd32.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

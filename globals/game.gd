@@ -19,10 +19,14 @@ func _ready():
 	set_worlds_data(data.worlds)
 
 func load_level(world, lvl):
+	SoundFx.stop_background()
+	SoundFx.play_background("World" + str(world))
 	_set_current_world_index_and_level(world, lvl)
 	get_tree().change_scene(SCENE_PREFIX_NAME.replace("-x-", world).replace("-y-", lvl))
 
 func level_complete(coins):
+	#Detenemos la musica
+	SoundFx.stop_background()
 	# set stars in level
 	worlds[current_world_index].levels[current_lvl_index].stars = 3 #get_life()
 	# increase score
@@ -86,8 +90,6 @@ func get_current_level():
 
 func _count_world_levels():
 	var world_lvls = []
-	var world_count = 0
-	var world = Directory.new()
 	# iteramos los worlds
 	var total_worlds = find_files(SCENE_WORLD_FOLDER_PATH, "world", true)
 	for i in range(total_worlds):
