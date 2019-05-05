@@ -7,8 +7,7 @@ signal death()
 func _ready():
 	$Light2D.enabled = enabled_light
 	get_parent().get_node("GUIS/Gamepad").connect("shoot", self, "_on_Gamepad_shoot")
-	$Health.connect("health_changed", self, "_on_Health_health_changed")
-	$Health.connect("state_changed", self, "_on_Health_health_changed")
+	$Health.connect("take_damage", self, "_on_Health_take_damage")
 
 func _on_Gamepad_shoot():
 	if can_shoot:
@@ -36,7 +35,6 @@ func shoot(_speed):
 		SoundFx.play_fx("Jump")
 		apply_impulse(Vector2(), Vector2((stick_vector.x * (stick_speed + _speed/4)), shoot_speed * -1))
 
-func _on_Health_health_changed(new_health):
+func _on_Health_take_damage(new_health):
 	if new_health == 0:
-		SoundFx.play_fx("Death")
 		emit_signal("death")

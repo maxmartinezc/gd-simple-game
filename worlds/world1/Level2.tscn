@@ -21,3 +21,5 @@ position = Vector2( 243.907, 267.65 )
 position = Vector2( 15.6103, 645.707 )
 speed = 330
 
+[node name="LevelTimeOutTimer" type="Timer" parent="." index="7"]
+[connection signal="timeout" from="LevelTimeOutTimer" to="." method="_on_LevelTimeOutTimer_timeout"]

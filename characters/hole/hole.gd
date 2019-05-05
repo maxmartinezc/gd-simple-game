@@ -4,11 +4,11 @@ export (int) var coins_to_winner = 1
 export (int) var speed = 1
 export var longitude = Vector2(100, 0)
 export (int) var type = 1
-signal go_in(coins_to_winner)
+signal win(coins_to_winner, health)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	connect("go_in", game, "level_complete")
+	connect("win", game, "level_complete")
 	var screen_width = get_viewport_rect().size.x
 	set_global_position(Vector2((screen_width/2) - longitude.x/2, position.y))
 	move()
@@ -45,4 +45,4 @@ func _on_Tween_tween_completed(object, key):
 
 
 func _on_Area2D_body_entered(body):
-	emit_signal("go_in", coins_to_winner)
+	emit_signal("win", coins_to_winner, body.get_node("Health").get_health())

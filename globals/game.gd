@@ -6,12 +6,12 @@ const SCENE_PREFIX_NAME = SCENE_WORLD_FOLDER_PATH + "/world-x-/Level-y-.tscn"
 const SCENE_LEVEL_COMPLETE = "res://gui/level-complete/LevelComplete.tscn"
 const SCENE_GAME_OVER = "res://gui/game-over/GameOver.tscn"
 const MAX_HEALTH = 100
+const MAX_STARS = 3
 
 onready var save_game = preload("res://globals/save.gd").new()
 var worlds = [] setget set_worlds_data, get_worlds_data
 var current_lvl_index = 0 setget , get_current_level
 var current_world_index = 0
-
 
 func _ready():
 	var data = generate_game_data() if save_game.is_new_game() else save_game.load_game()
@@ -24,13 +24,14 @@ func load_level(world, lvl):
 	_set_current_world_index_and_level(world, lvl)
 	get_tree().change_scene(SCENE_PREFIX_NAME.replace("-x-", world).replace("-y-", lvl))
 
-func level_complete(coins):
+func level_complete(coins, health):
 	#Detenemos la musica
 	SoundFx.stop_background()
-	# set stars in level
-	worlds[current_world_index].levels[current_lvl_index].stars = 3 #get_life()
+	SoundFx.play_fx("Win")
+
+	worlds[current_world_index].levels[current_lvl_index].stars = _calculate_stars_to_winner(health)
 	# increase score
-	worlds[current_world_index].levels[current_lvl_index].score = coins * 3 #get_life()
+	worlds[current_world_index].levels[current_lvl_index].score = coins * health
 
 	#global score
 	_score += coins
@@ -138,3 +139,14 @@ func get_max_health():
 
 func game_over():
 	get_tree().change_scene(SCENE_GAME_OVER)
+
+func _calculate_stars_to_winner(health):
+	var stars = 0
+	# set stars in level
+	if health == MAX_HEALTH:
+		stars = MAX_STARS
+	elif health >= 60:
+		stars = MAX_STARS - 1
+	elif health >= 30:
+		stars = MAX_STARS - 2
+	return stars

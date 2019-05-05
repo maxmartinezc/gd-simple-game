@@ -5,6 +5,7 @@ func _ready():
 	visible = false
 
 func show():
+	SoundFx.play_fx("Death")
 	SoundFx.stop_background()
 	get_tree().paused = true
 	visible = true

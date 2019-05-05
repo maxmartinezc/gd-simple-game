@@ -1,26 +1,29 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://gui/sounds/sound-fx.gd" type="Script" id=1]
 [ext_resource path="res://gui/sounds/background/menu.wav" type="AudioStream" id=2]
 [ext_resource path="res://gui/sounds/background/world1.wav" type="AudioStream" id=3]
 [ext_resource path="res://gui/sounds/background/world2.wav" type="AudioStream" id=4]
 [ext_resource path="res://gui/sounds/background/world3.wav" type="AudioStream" id=5]
-[ext_resource path="res://gui/sounds/fx/coin.wav" type="AudioStream" id=6]
-[ext_resource path="res://gui/sounds/fx/death.wav" type="AudioStream" id=7]
-[ext_resource path="res://gui/sounds/fx/jump.wav" type="AudioStream" id=8]
-[ext_resource path="res://gui/sounds/fx/damage.wav" type="AudioStream" id=9]
-[ext_resource path="res://gui/sounds/fx/switchy.wav" type="AudioStream" id=10]
-[ext_resource path="res://gui/sounds/fx/select.wav" type="AudioStream" id=11]
-[ext_resource path="res://gui/sounds/fx/throw.wav" type="AudioStream" id=12]
-[ext_resource path="res://gui/sounds/fx/hit.ogg" type="AudioStream" id=13]
-[ext_resource path="res://gui/sounds/fx/boom.ogg" type="AudioStream" id=14]
+[ext_resource path="res://gui/sounds/background/world4.wav" type="AudioStream" id=6]
+[ext_resource path="res://gui/sounds/fx/coin.wav" type="AudioStream" id=7]
+[ext_resource path="res://gui/sounds/fx/power_up.wav" type="AudioStream" id=8]
+[ext_resource path="res://gui/sounds/fx/win.wav" type="AudioStream" id=9]
+[ext_resource path="res://gui/sounds/fx/hurry_up.wav" type="AudioStream" id=10]
+[ext_resource path="res://gui/sounds/fx/death.wav" type="AudioStream" id=11]
+[ext_resource path="res://gui/sounds/fx/jump.wav" type="AudioStream" id=12]
+[ext_resource path="res://gui/sounds/fx/damage.wav" type="AudioStream" id=13]
+[ext_resource path="res://gui/sounds/fx/switchy.wav" type="AudioStream" id=14]
+[ext_resource path="res://gui/sounds/fx/select.wav" type="AudioStream" id=15]
+[ext_resource path="res://gui/sounds/fx/throw.wav" type="AudioStream" id=16]
+[ext_resource path="res://gui/sounds/fx/hit.ogg" type="AudioStream" id=17]
+[ext_resource path="res://gui/sounds/fx/boom.ogg" type="AudioStream" id=18]
 
 [node name="SoundFx" type="Node2D"]
 pause_mode = 2
 script = ExtResource( 1 )
 
 [node name="Background" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="Menu" type="AudioStreamPlayer2D" parent="Background"]
 stream = ExtResource( 2 )
@@ -38,34 +41,47 @@ volume_db = -10.0
 stream = ExtResource( 5 )
 volume_db = -10.0
 
+[node name="World4" type="AudioStreamPlayer2D" parent="Background"]
+stream = ExtResource( 6 )
+volume_db = -10.0
+
 [node name="Fx" type="Node2D" parent="."]
 
 [node name="Coin" type="AudioStreamPlayer2D" parent="Fx"]
-stream = ExtResource( 6 )
-
-[node name="Death" type="AudioStreamPlayer2D" parent="Fx"]
 stream = ExtResource( 7 )
 
-[node name="Jump" type="AudioStreamPlayer2D" parent="Fx"]
+[node name="PowerUp" type="AudioStreamPlayer2D" parent="Fx"]
 stream = ExtResource( 8 )
 
-[node name="Damage" type="AudioStreamPlayer2D" parent="Fx"]
+[node name="Win" type="AudioStreamPlayer2D" parent="Fx"]
 stream = ExtResource( 9 )
 
-[node name="Switchy" type="AudioStreamPlayer2D" parent="Fx"]
+[node name="HurryUp" type="AudioStreamPlayer2D" parent="Fx"]
 stream = ExtResource( 10 )
+
+[node name="Death" type="AudioStreamPlayer2D" parent="Fx"]
+stream = ExtResource( 11 )
+
+[node name="Jump" type="AudioStreamPlayer2D" parent="Fx"]
+stream = ExtResource( 12 )
+
+[node name="Damage" type="AudioStreamPlayer2D" parent="Fx"]
+stream = ExtResource( 13 )
+
+[node name="Switchy" type="AudioStreamPlayer2D" parent="Fx"]
+stream = ExtResource( 14 )
 volume_db = -5.0
 
 [node name="Select" type="AudioStreamPlayer2D" parent="Fx"]
-stream = ExtResource( 11 )
+stream = ExtResource( 15 )
 
 [node name="Throw" type="AudioStreamPlayer2D" parent="Fx"]
-stream = ExtResource( 12 )
+stream = ExtResource( 16 )
 
 [node name="Hit" type="AudioStreamPlayer2D" parent="Fx"]
-stream = ExtResource( 13 )
+stream = ExtResource( 17 )
 volume_db = -5.0
 
 [node name="Boom" type="AudioStreamPlayer2D" parent="Fx"]
-stream = ExtResource( 14 )
+stream = ExtResource( 18 )
 volume_db = -10.0

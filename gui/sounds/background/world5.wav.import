@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/world5.wav-e183c14459dc408e2e434cc25f4057ae.sample"
+
+[deps]
+
+source_file="res://gui/sounds/background/world5.wav"
+dest_files=[ "res://.import/world5.wav-e183c14459dc408e2e434cc25f4057ae.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
