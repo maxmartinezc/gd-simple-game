@@ -17,7 +17,7 @@ position = Vector2( 388.524, 366.939 )
 [node name="Grass4" parent="Objects" index="3" instance=ExtResource( 2 )]
 position = Vector2( 243.907, 267.65 )
 
-[node name="Ball" parent="." index="4"]
+[node name="Ball" parent="." index="5"]
 position = Vector2( 15.6103, 645.707 )
 speed = 330
 

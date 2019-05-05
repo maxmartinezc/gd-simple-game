@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://worlds/world1/BaseWorld1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://worlds/environments/grass/Grass.tscn" type="PackedScene" id=2]
-[ext_resource path="res://worlds/collectibles/Potion/Potion.tscn" type="PackedScene" id=3]
 
 [node name="Level1" instance=ExtResource( 1 )]
 
@@ -10,18 +9,17 @@
 position = Vector2( 486.341, 533.437 )
 
 [node name="Grass2" parent="Objects" index="1" instance=ExtResource( 2 )]
-position = Vector2( 286.619, 361.632 )
+position = Vector2( 321.781, 354.23 )
 
-[node name="Potion" parent="Objects" index="2" instance=ExtResource( 3 )]
-position = Vector2( 184.091, 661.453 )
-
-[node name="Ball" parent="." index="4"]
-position = Vector2( 268.491, 321.751 )
-speed = 500
-
-[node name="Hole" parent="." index="5"]
-position = Vector2( 297.224, 100.582 )
+[node name="Hole" parent="." index="4"]
+position = Vector2( 320.577, 145.686 )
 longitude = Vector2( 0, 0 )
+type = 0
+goal_bar_size = 60
+
+[node name="Ball" parent="." index="5"]
+position = Vector2( 177.924, 690.02 )
+speed = 500
 
 [node name="LevelTimeOutTimer" type="Timer" parent="." index="7"]
 [connection signal="timeout" from="LevelTimeOutTimer" to="." method="_on_LevelTimeOutTimer_timeout"]

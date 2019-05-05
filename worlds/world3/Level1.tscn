@@ -38,7 +38,7 @@ position = Vector2( 604.53, 601.817 )
 ]]
 position = Vector2( 455.275, 493.649 )
 
-[node name="Ball" parent="." index="4"]
+[node name="Ball" parent="." index="5"]
 position = Vector2( 343.178, 699.375 )
 rotation = 0.226729
 speed = 400
@@ -46,9 +46,5 @@ speed = 400
 [node name="GUIS" parent="." index="6"]
 editor/display_folded = true
 
-[node name="LifeLayer" parent="GUIS" index="0"]
-editor/display_folded = false
-
 [node name="MenuLayer" parent="GUIS" index="1"]
 editor/display_folded = true
-

@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://worlds/base-world.gd" type="Script" id=1]
-[ext_resource path="res://characters/ball/Ball.tscn" type="PackedScene" id=2]
-[ext_resource path="res://characters/hole/Hole.tscn" type="PackedScene" id=3]
+[ext_resource path="res://characters/hole/Hole.tscn" type="PackedScene" id=2]
+[ext_resource path="res://characters/ball/Ball.tscn" type="PackedScene" id=3]
 [ext_resource path="res://gui/header/Header.tscn" type="PackedScene" id=4]
 [ext_resource path="res://gui/pause/Pause.tscn" type="PackedScene" id=5]
 [ext_resource path="res://gui/game-over/GameOver.tscn" type="PackedScene" id=6]
@@ -80,11 +80,10 @@ shape = SubResource( 1 )
 
 [node name="Objects" type="Node" parent="."]
 
-[node name="Ball" parent="." instance=ExtResource( 2 )]
-position = Vector2( 268.041, 448.426 )
+[node name="Hole" parent="." instance=ExtResource( 2 )]
 
-[node name="Hole" parent="." instance=ExtResource( 3 )]
-position = Vector2( 23.9492, 83.1921 )
+[node name="Ball" parent="." instance=ExtResource( 3 )]
+position = Vector2( 268.041, 448.426 )
 
 [node name="GUIS" type="Node" parent="."]
 

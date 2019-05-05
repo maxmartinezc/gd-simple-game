@@ -22,17 +22,11 @@ polygon = PoolVector2Array( 5.92398, 120.834, 33.0063, 168.034, 64.7313, 115.417
 editor/display_folded = true
 collision_mask = 10
 
-[node name="Ball" parent="." index="4"]
-position = Vector2( 263.834, 632.756 )
-speed = 600
-
-[node name="Hole" parent="." index="5"]
-position = Vector2( 32.2937, 86.2054 )
+[node name="Hole" parent="." index="4"]
+position = Vector2( 39.6602, 143.909 )
 coins_to_winner = 100
 speed = 5
 
-[node name="GUIS" parent="." index="6"]
-editor/display_folded = false
-
-[node name="LifeLayer" parent="GUIS" index="0"]
-editor/display_folded = false
+[node name="Ball" parent="." index="5"]
+position = Vector2( 263.834, 632.756 )
+speed = 600
