@@ -15,3 +15,7 @@ func stop_background():
 	for p in $Background.get_children():
 		if p.is_playing():
 			p.stop()
+			
+func stop_fx(sfx):
+	var p = get_node("Fx/" + sfx)
+	p.stop()

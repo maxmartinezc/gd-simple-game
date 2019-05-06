@@ -12,10 +12,10 @@ onready var save_game = preload("res://globals/save.gd").new()
 var worlds = [] setget set_worlds_data, get_worlds_data
 var current_lvl_index = 0 setget , get_current_level
 var current_world_index = 0
+var _coins = 0 setget , get_coins
 
 func _ready():
 	var data = generate_game_data() if save_game.is_new_game() else save_game.load_game()
-	_score = data.score
 	set_worlds_data(data.worlds)
 
 func load_level(world, lvl):
@@ -30,11 +30,12 @@ func level_complete(coins, health):
 	SoundFx.play_fx("Win")
 
 	worlds[current_world_index].levels[current_lvl_index].stars = _calculate_stars_to_winner(health)
-	# increase score
-	worlds[current_world_index].levels[current_lvl_index].score = coins * health
+	
+	#global score (suma de las monedas entregadas por el nivel + las monedas recolectadas)
+	_score += coins + _coins
 
-	#global score
-	_score += coins
+	# increase score
+	worlds[current_world_index].levels[current_lvl_index].score = _score
 	
 	# unlock next world level (solo si existe)
 	if worlds[current_world_index].levels.size() - 1 > current_lvl_index:
@@ -150,3 +151,9 @@ func _calculate_stars_to_winner(health):
 	elif health >= 30:
 		stars = MAX_STARS - 2
 	return stars
+	
+func coin_collected(amount):
+	_coins += amount
+
+func get_coins():
+	return _coins

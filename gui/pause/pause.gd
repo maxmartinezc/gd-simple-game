@@ -24,4 +24,5 @@ func _on_RestartButton_pressed():
 func _on_ExitButton_pressed():
 	SoundFx.play_fx("Switchy")
 	_pause()
+	SoundFx.stop_background()
 	get_tree().change_scene(path_scene_select_level)

@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://worlds/world3/BaseWorld3.tscn" type="PackedScene" id=1]
 [ext_resource path="res://characters/enemy/cactus/StraightCactus.tscn" type="PackedScene" id=2]
 [ext_resource path="res://characters/enemy/cactus/RoundCactus.tscn" type="PackedScene" id=3]
+[ext_resource path="res://worlds/collectibles/Potion/Potion.tscn" type="PackedScene" id=4]
+[ext_resource path="res://worlds/collectibles/Coin/Coin.tscn" type="PackedScene" id=5]
 
 [node name="Level1" index="0" instance=ExtResource( 1 )]
 
@@ -38,12 +40,29 @@ position = Vector2( 604.53, 601.817 )
 ]]
 position = Vector2( 455.275, 493.649 )
 
-[node name="Ball" parent="." index="5"]
-position = Vector2( 343.178, 699.375 )
+[node name="Potion" parent="Collectibles" index="0" instance=ExtResource( 4 )]
+position = Vector2( 351.401, 576.202 )
+recovery_amount = 30
+
+[node name="Potion2" parent="Collectibles" index="1" instance=ExtResource( 4 )]
+position = Vector2( 622.043, 652.097 )
+recovery_amount = 30
+
+[node name="Coin" parent="Collectibles" index="2" instance=ExtResource( 5 )]
+position = Vector2( 604.314, 547.195 )
+
+[node name="Coin2" parent="Collectibles" index="3" instance=ExtResource( 5 )]
+position = Vector2( 454.066, 438.516 )
+
+[node name="Coin3" parent="Collectibles" index="4" instance=ExtResource( 5 )]
+position = Vector2( 267.549, 297.184 )
+
+[node name="Ball" parent="." index="6"]
+position = Vector2( 241.508, 619.185 )
 rotation = 0.226729
 speed = 400
 
-[node name="GUIS" parent="." index="6"]
+[node name="GUIS" parent="." index="7"]
 editor/display_folded = true
 
 [node name="MenuLayer" parent="GUIS" index="1"]

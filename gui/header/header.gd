@@ -10,8 +10,11 @@ func _ready():
 	$TimeOutTimer.start()
 	
 func set_life_bar_value(new_health):
-	$HBoxContainer/Bar1/TextureProgress.value = new_health
+	$HBoxContainer/Bar1/Progress/TextureProgress.value = new_health
 
+func set_coins(amount):
+	$HBoxContainer/Bar1/Progress/Score/Title.set_text(str(amount))
+	
 func _on_TimerTimeOut_timeout():
 	seconds_remaining -= 1
 	$HBoxContainer/Bar2/Time/Background/Seconds.set_text(str(seconds_remaining))
@@ -30,8 +33,8 @@ func _setup():
 	$TimeOutTimer.wait_time = 1
 	$HBoxContainer/Bar2/Time/Background/Seconds.set_text(str(seconds_remaining))
 	$HBoxContainer/Bar3/Level/Background/Number.set_text(str(world_level.world) + "-" + str(world_level.level))
-	$HBoxContainer/Bar1/TextureProgress.max_value = game.get_max_health()
-	$HBoxContainer/Bar1/TextureProgress.value = game.get_max_health()
+	$HBoxContainer/Bar1/Progress/TextureProgress.max_value = game.get_max_health()
+	$HBoxContainer/Bar1/Progress/TextureProgress.value = game.get_max_health()
 
 func _on_BlinkSecondsTimer_timeout():
 	$HBoxContainer/Bar2/Time/Background/Seconds.visible = !$HBoxContainer/Bar2/Time/Background/Seconds.visible

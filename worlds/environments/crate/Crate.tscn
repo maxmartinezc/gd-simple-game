@@ -3,12 +3,12 @@
 [ext_resource path="res://worlds/environments/ObjectBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://worlds/environments/crate/body.png" type="Texture" id=2]
 
-
-[node name="Crate" instance=ExtResource( 1 )]
+[node name="Crate" groups=[
+"platform",
+] instance=ExtResource( 1 )]
 
 [node name="Body" parent="." index="0"]
 texture = ExtResource( 2 )
 
 [node name="CollisionPolygon2D" parent="." index="1"]
 polygon = PoolVector2Array( -20.2154, -19.912, -20.1471, 19.9367, 20.0871, 20.0087, 20.0431, -19.8846 )
-

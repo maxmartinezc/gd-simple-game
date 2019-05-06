@@ -1,10 +1,7 @@
 extends Node2D
 
 func _ready():
-	$Ball/Health.connect("take_damage", self, "_on_Ball_take_damage")
-	$Ball/Health.connect("recover_health", self, "_on_Health_recover_health")
-	$Ball.connect("death", self, "_on_Ball_death")
-	$GUIS/LifeLayer/Header.connect("time_out", self, "level_time_out")
+	_setup()
 
 func level_time_out():
 	$GUIS/MenuLayer/GameOver.show()
@@ -22,3 +19,19 @@ func _on_Ball_death():
 func _on_Top_body_entered(body):
 	SoundFx.play_fx("Hit")
 	body.get_node("Health").take_damage(10)
+	
+func _setup():
+	$Ball/Health.connect("take_damage", self, "_on_Ball_take_damage")
+	$Ball/Health.connect("recover_health", self, "_on_Health_recover_health")
+	$Ball.connect("death", self, "_on_Ball_death")
+	$GUIS/LifeLayer/Header.connect("time_out", self, "level_time_out")
+	_connect_coins()
+	
+
+func _connect_coins():
+	for coin in get_tree().get_nodes_in_group("coins"):
+		coin.connect("collect_coin", self, "_On_Coin_collected")
+
+func _On_Coin_collected(amount):
+	game.coin_collected(amount)
+	$GUIS/LifeLayer/Header.set_coins(game.get_coins())
