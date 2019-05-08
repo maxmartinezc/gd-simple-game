@@ -42,5 +42,5 @@ func _on_Tween_tween_completed(object, key):
 	move()
 
 func _on_PlatformBase_body_entered(body):
-	if body.position.y > position.y:
+	if body.global_position.y > global_position.y:
 		SoundFx.play_fx("Boom")

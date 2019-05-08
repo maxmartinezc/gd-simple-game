@@ -1,6 +1,6 @@
 extends VBoxContainer
 
-const TEXTURE_LEVELS = "res://gui/level-select/l*.png"
+const TEXTURE_LEVELS = "res://gui/level-select/assets/l*.png"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

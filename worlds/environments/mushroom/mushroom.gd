@@ -16,5 +16,11 @@ func _on_Mushroom_body_entered(body):
 	SoundFx.play_fx("Throw")
 	var ball = body
 	var shoot_speed = ball.speed + (ball.speed * trampolin_jump_percentage/100)
-	print(shoot_speed)
+	ball.shoot(shoot_speed)
+
+
+func _on_Area2D_body_entered(body):
+	SoundFx.play_fx("Throw")
+	var ball = body
+	var shoot_speed = ball.speed + (ball.speed * trampolin_jump_percentage/100)
 	ball.shoot(shoot_speed)

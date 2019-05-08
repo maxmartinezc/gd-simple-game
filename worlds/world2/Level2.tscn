@@ -7,6 +7,9 @@
 
 [node name="Level2" index="0" instance=ExtResource( 1 )]
 
+[node name="TileMap" parent="." index="1"]
+tile_data = PoolIntArray( 0, 0, 0, 720897, 0, 0 )
+
 [node name="Grass" parent="Objects" index="0" instance=ExtResource( 2 )]
 position = Vector2( 435.932, 619.611 )
 
@@ -20,10 +23,9 @@ position = Vector2( 230.898, 750.495 )
 [node name="Grass2" parent="Objects" index="3" instance=ExtResource( 2 )]
 position = Vector2( 277.259, 272.649 )
 
-[node name="Ball" parent="." index="3"]
-position = Vector2( 404.505, 518.296 )
-speed = 325
-
-[node name="Hole" parent="." index="4"]
+[node name="Hole" parent="." index="6"]
 speed = 3
 
+[node name="Ball" parent="." index="7"]
+position = Vector2( 404.505, 518.296 )
+speed = 325

@@ -1,12 +1,13 @@
 extends Control
 
-export(PackedScene) var lvl_block
+export(PackedScene) var lvl_lock
 export(PackedScene) var lvl_open
 export (String) var path_scene_title_screen
 var visible_world_level = 1
 var world_lvls = []
 
 func _ready():
+	SoundFx.play_background("Menu")
 	world_lvls = game.get_worlds_data()
 	_load_world_levels(1)
 
@@ -28,7 +29,7 @@ func _on_NextButton_pressed():
 
 func _load_world_levels(world):
 	for i in $TextureRect/GridContainer.get_children():
-    	i.queue_free()
+	 	i.queue_free()
 
 	for item in world_lvls:
 		if item.world == world:
@@ -39,7 +40,7 @@ func _load_world_levels(world):
 					$TextureRect/GridContainer.add_child(child)
 					child.initialize(item.world, lvl)
 				else:
-					child = lvl_block.instance()
+					child = lvl_lock.instance()
 					$TextureRect/GridContainer.add_child(child)
 					
 	visible_world_level = world

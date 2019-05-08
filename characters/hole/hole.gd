@@ -55,7 +55,7 @@ func _set_body():
 	$Body/Center/Area2D/CollisionShape.shape.set_extents(Vector2(goal_bar_size/2,5))
 	
 func _on_Area2D_body_entered(body):
-	emit_signal("win", coins_to_winner, body.get_node("Health").get_health())
+	emit_signal("win", coins_to_winner, body.get_node("../Health").get_health())
 
 func _on_RigidBody2D_body_entered(body):
 	if body.position.y > position.y:

@@ -1,18 +1,27 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://worlds/environments/ObjectBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://worlds/environments/mushroom/mushroom.gd" type="Script" id=2]
 [ext_resource path="res://worlds/environments/mushroom/body.png" type="Texture" id=3]
 
-[node name="Mushroom" index="0" instance=ExtResource( 1 )]
-contacts_reported = 1
-contact_monitor = true
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 4.95032
+height = 12.7632
+
+[node name="Mushroom" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
 [node name="Body" parent="." index="0"]
 texture = ExtResource( 3 )
 
 [node name="CollisionPolygon2D" parent="." index="1"]
-polygon = PoolVector2Array( -15.1527, 11.5092, -24.6859, 3.96208, -22.6998, -4.77664, -16.3443, -15.1042, -7.20842, -18.2819, 4.31079, -19.4736, 15.83, -14.3098, 23.3771, -3.58499, 23.3771, 6.34536, 15.0356, 12.7008, 11.0634, 13.098, 11.0634, 19.8507, -14.3583, 19.8507 )
+polygon = PoolVector2Array( -15.1527, 11.5092, -24.6859, 3.96208, -22.6998, -4.77664, -14.564, -15.9219, -10.6195, -10.7152, -0.206062, -6.29735, 12.4163, -11.8196, 13.5207, -16.0797, 23.3771, -3.58499, 23.3771, 6.34536, 15.0356, 12.7008, 11.0634, 13.098, 11.0634, 19.8507, -14.3583, 19.8507 )
 
-[connection signal="body_entered" from="." to="." method="_on_Mushroom_body_entered"]
+[node name="Area2D" type="Area2D" parent="." index="2"]
+position = Vector2( 0, -15 )
+
+[node name="Trampolin" type="CollisionShape2D" parent="Area2D" index="0"]
+rotation = -1.5588
+scale = Vector2( 1, 1 )
+shape = SubResource( 1 )
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

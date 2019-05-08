@@ -8,12 +8,12 @@ func _ready():
 	var data = game.get_level_complete()
 	# nivel 1 no se muestra el current score
 	if data.id > 1:
-		$TextureRect/VBoxContainer/Score/General.set_text(str(game.get_score()))
+		$VBoxContainer/TextureRect/VBoxContainer/Score/General.set_text(str(game.get_score()))
 	else:
-		$TextureRect/VBoxContainer/Score/General.visible = false
+		$VBoxContainer/TextureRect/VBoxContainer/Score/General.visible = false
 
-	$TextureRect/VBoxContainer/Stars.texture = load(TEXTURE_STARS.replace("*", data.stars))
-	$TextureRect/VBoxContainer/Score/Level.set_text("+" + str(data.score))
+	$VBoxContainer/TextureRect/VBoxContainer/Stars.texture = load(TEXTURE_STARS.replace("*", data.stars))
+	$VBoxContainer/TextureRect/VBoxContainer/Score/Level.set_text("+" + str(data.score))
 
 func _on_RestartButton_pressed():
 	game.reload_current_level()

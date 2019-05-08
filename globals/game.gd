@@ -73,7 +73,7 @@ func generate_game_data():
 			# solo el primer nivel esta abierto
 			lvls.push_back({ 
 				"id": l + 1, 
-				"open": true if (l == 0 && item.world == 1) else false, 
+				"open": true, # if (l == 0 && item.world == 1) else false, 
 				"score": 0,
 				"stars": 0
 			})
