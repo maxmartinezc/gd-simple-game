@@ -41,6 +41,6 @@ func _on_Tween_tween_completed(object, key):
 	longitude *= -1
 	move()
 
-func _on_PlatformBase_body_entered(body):
-	if body.global_position.y > global_position.y:
-		SoundFx.play_fx("Boom")
+#func _on_PlatformBase_body_entered(body):
+#	if body.global_position.y > global_position.y:
+#		SoundFx.play_fx("Boom")

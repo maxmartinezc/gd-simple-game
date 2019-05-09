@@ -1,16 +1,24 @@
 extends RigidBody2D
 
 enum States {
+	IDLE,
 	WALK,
+	BUMP,
 	JUMP,
+	FALL,
+	INVINCIBLE,
 	DEATH,
 	DOT_HIT
 }
 
 enum Events {
 	INVALID=-1,
+	IDLE,
 	WALK,
+	BUMP,
 	JUMP,
+	FALL,
+	INVINCIBLE,
 	DIE,
 	DEATH,
 	DOT_HIT

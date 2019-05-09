@@ -33,5 +33,4 @@ __meta__ = {
 
 [node name="Small" type="Sprite" parent="Analog/Big"]
 texture = ExtResource( 6 )
-
 [connection signal="pressed" from="ShootButton" to="." method="_on_ShootButton_pressed"]
