@@ -17,13 +17,14 @@ func set_coins(amount):
 	
 func _on_TimerTimeOut_timeout():
 	seconds_remaining -= 1
-	$HBoxContainer/Bar2/Time/Background/Seconds.set_text(str(seconds_remaining))
+	$HBoxContainer/Bar3/Seconds.set_text(str(seconds_remaining))
 	if seconds_remaining == 0:
 		$TimeOutTimer.stop()
 		$BlinkSecondsTimer.stop()
 		emit_signal("time_out")
 	elif seconds_remaining == seconds_to_blink_time:
 		SoundFx.play_fx("HurryUp")
+		$HBoxContainer/Bar3/Seconds.add_color_override("font_color", Color.red)
 		$BlinkSecondsTimer.start()
 		
 func _setup():
@@ -31,10 +32,10 @@ func _setup():
 	var world_level = game.get_current_level()
 	$BlinkSecondsTimer.wait_time = 0.5
 	$TimeOutTimer.wait_time = 1
-	$HBoxContainer/Bar2/Time/Background/Seconds.set_text(str(seconds_remaining))
-	$HBoxContainer/Bar3/Level/Background/Number.set_text(str(world_level.world) + "-" + str(world_level.level))
+	$HBoxContainer/Bar3/Seconds.set_text(str(seconds_remaining))
+	$HBoxContainer/Bar1/Progress/Score/LevelNumber.set_text(str(world_level.world) + "-" + str(world_level.level))
 	$HBoxContainer/Bar1/Progress/TextureProgress.max_value = game.get_max_health()
 	$HBoxContainer/Bar1/Progress/TextureProgress.value = game.get_max_health()
 
 func _on_BlinkSecondsTimer_timeout():
-	$HBoxContainer/Bar2/Time/Background/Seconds.visible = !$HBoxContainer/Bar2/Time/Background/Seconds.visible
+	$HBoxContainer/Bar3/Seconds.visible = !$HBoxContainer/Bar3/Level/Seconds.visible

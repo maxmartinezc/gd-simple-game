@@ -28,7 +28,6 @@ func take_damage(amount):
 	if status == STATUSES.INVINCIBLE:
 		return
 
-	SoundFx.play_fx("Hit")
 	health -= amount
 	if health < 0:
 		health = 0
@@ -49,5 +48,7 @@ func get_max_health():
 	return max_health
 
 func _on_InvincibleTimer_timeout():
+	print("timout")
+	$InvincibleTimer.stop()
 	_change_status(STATUSES.NONE)
 	emit_signal("invincible", false)

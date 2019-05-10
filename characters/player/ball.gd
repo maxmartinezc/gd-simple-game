@@ -1,23 +1,29 @@
 extends "res://characters/character.gd"
 
-var animated_sprite_node
 export (bool) var enabled_light = false
 export (int) var speed setget set_speed
 
+signal death()
 var impulse = Vector2()
 var offset = Vector2()
+
+var animated_sprite_node
 
 func _ready():
 	animated_sprite_node = get_node("../AnimatedSprite")
 	$Light2D.enabled = enabled_light
 	get_node("../Health").connect("take_damage", self, "_on_Health_take_damage")
 	get_node("../Health").connect("invincible", self, "_on_Health_invincible")
+	get_node("../Health").connect("recover_health", self, "_on_Health_recover")
 	animated_sprite_node.connect('animation_finished', self, "_on_animation_finished")
 
 func _init():
 	_transitions = {
 		[States.IDLE, Events.WALK]: States.WALK,
+		[States.IDLE, Events.DOT_HIT]: States.DOT_HIT,
+		[States.IDLE, Events.JUMP]: States.JUMP,
 		
+		[States.WALK, Events.IDLE]: States.IDLE,
 		[States.WALK, Events.JUMP]: States.JUMP,
 		[States.WALK, Events.DOT_HIT]: States.DOT_HIT,
 		[States.WALK, Events.BUMP]: States.BUMP,
@@ -27,6 +33,7 @@ func _init():
 		[States.DOT_HIT, Events.WALK]: States.WALK,
 		[States.DOT_HIT, Events.DEATH]: States.DEATH,
 		[States.DOT_HIT, Events.BUMP]: States.BUMP,
+		[States.DOT_HIT, Events.FALL]: States.FALL,
 		
 		[States.JUMP, Events.IDLE]: States.IDLE,
 		[States.JUMP, Events.WALK]: States.WALK,
@@ -38,8 +45,9 @@ func _init():
 		[States.FALL, Events.WALK]: States.WALK,
 		[States.FALL, Events.INVINCIBLE]: States.INVINCIBLE,
 		[States.FALL, Events.DOT_HIT]: States.DOT_HIT,
-		
-		
+		[States.FALL, Events.DEATH]: States.DEATH,
+		[States.FALL, Events.IDLE]: States.IDLE,
+			
 		[States.BUMP, Events.IDLE]: States.IDLE,
 		[States.BUMP, Events.DOT_HIT]: States.DOT_HIT,
 		
@@ -79,6 +87,7 @@ func _jump():
 	change_state(Events.FALL)
 
 func _damage():
+	SoundFx.play_fx("Hit")
 	animated_sprite_node.play("damage")
 	change_state(Events.IDLE)
 	
@@ -98,8 +107,13 @@ func _on_Health_invincible(value):
 	if value:
 		change_state(Events.INVINCIBLE)
 	else:
+		print(state)
 		change_state(Events.IDLE)
-		
+
+func _on_Health_recover(v):
+	SoundFx.play_fx("PowerUp")
+	animated_sprite_node.play("health")
+	
 func _on_Ball_body_shape_entered(body_id, body, body_shape, local_shape):
 	if body.is_in_group("platform"):
 		if body.global_position.y > global_position.y:
@@ -122,5 +136,4 @@ func set_speed(_speed):
 	speed = _speed
 
 func _on_Ball_body_shape_exited(body_id, body, body_shape, local_shape):
-	print("AAA")
 	change_state(Events.FALL)

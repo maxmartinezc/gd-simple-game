@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://gui/header/header.gd" type="Script" id=1]
 [ext_resource path="res://gui/header/assets/lifebar_bg2_icon.png" type="Texture" id=2]
@@ -9,15 +9,18 @@
 [ext_resource path="res://gui/header/assets/coin_24x24.png" type="Texture" id=7]
 
 [sub_resource type="DynamicFont" id=1]
-size = 28
+size = 26
 font_data = ExtResource( 6 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 50
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 24
 font_data = ExtResource( 6 )
 
 [sub_resource type="DynamicFont" id=3]
-size = 32
+size = 24
 font_data = ExtResource( 6 )
 
 [node name="Header" type="MarginContainer"]
@@ -25,18 +28,18 @@ margin_right = 640.0
 margin_bottom = 40.0
 script = ExtResource( 1 )
 __meta__ = {
-"_edit_vertical_guides_": [ 600.236, 224.332, 249.196, 375.231 ]
+"_edit_vertical_guides_": [ 600.236, 224.332, 274.44, 375.231 ]
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 margin_right = 640.0
 margin_bottom = 75.0
 custom_constants/separation = 0
-alignment = 1
 
 [node name="Bar1" type="HBoxContainer" parent="HBoxContainer"]
-margin_right = 262.0
+margin_right = 380.0
 margin_bottom = 75.0
+rect_min_size = Vector2( 380, 0 )
 custom_constants/separation = 0
 
 [node name="LifeIcon" type="TextureRect" parent="HBoxContainer/Bar1"]
@@ -73,7 +76,7 @@ margin_top = -20.0
 margin_right = 22.0
 margin_bottom = 20.0
 custom_fonts/font = SubResource( 1 )
-text = "0"
+text = "9999"
 valign = 1
 
 [node name="Icon" type="TextureRect" parent="HBoxContainer/Bar1/Progress/Score"]
@@ -84,63 +87,52 @@ margin_top = 2.0
 rect_min_size = Vector2( 100, 0 )
 texture = ExtResource( 7 )
 
-[node name="Bar2" type="HBoxContainer" parent="HBoxContainer"]
-margin_left = 262.0
-margin_right = 480.0
-margin_bottom = 75.0
-rect_min_size = Vector2( 100, 0 )
-size_flags_horizontal = 3
-alignment = 1
-
-[node name="Time" type="MarginContainer" parent="HBoxContainer/Bar2"]
-margin_left = 59.0
-margin_right = 159.0
-margin_bottom = 75.0
-
-[node name="Background" type="NinePatchRect" parent="HBoxContainer/Bar2/Time"]
-margin_right = 100.0
-margin_bottom = 75.0
-rect_min_size = Vector2( 100, 50 )
-
-[node name="Seconds" type="Label" parent="HBoxContainer/Bar2/Time/Background"]
+[node name="LevelTitle" type="Label" parent="HBoxContainer/Bar1/Progress/Score"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_min_size = Vector2( 100, 0 )
+margin_right = -40.0
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0.992157, 0.435294, 0.435294, 1 )
-text = "0"
-align = 1
-
-[node name="Bar3" type="HBoxContainer" parent="HBoxContainer"]
-margin_left = 480.0
-margin_right = 640.0
-margin_bottom = 75.0
-
-[node name="Level" type="MarginContainer" parent="HBoxContainer/Bar3"]
-margin_right = 160.0
-margin_bottom = 75.0
-
-[node name="Background" type="NinePatchRect" parent="HBoxContainer/Bar3/Level"]
-margin_right = 160.0
-margin_bottom = 75.0
-rect_min_size = Vector2( 160, 50 )
-
-[node name="Title" type="Label" parent="HBoxContainer/Bar3/Level/Background"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 10.0
-rect_min_size = Vector2( 160, 0 )
-custom_fonts/font = SubResource( 3 )
 text = "Level"
+align = 2
 valign = 1
 
-[node name="Number" type="Label" parent="HBoxContainer/Bar3/Level/Background"]
+[node name="LevelNumber" type="Label" parent="HBoxContainer/Bar1/Progress/Score"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -10.0
-custom_fonts/font = SubResource( 3 )
-text = "1"
+margin_right = -5.0
+custom_fonts/font = SubResource( 2 )
+text = "0-0"
 align = 2
+valign = 1
+
+[node name="Bar3" type="HBoxContainer" parent="HBoxContainer"]
+margin_left = 380.0
+margin_right = 640.0
+margin_bottom = 75.0
+size_flags_horizontal = 3
+custom_constants/separation = 1
+alignment = 2
+
+[node name="Title" type="Label" parent="HBoxContainer/Bar3"]
+margin_left = 140.0
+margin_top = 22.0
+margin_right = 209.0
+margin_bottom = 53.0
+custom_fonts/font = SubResource( 4 )
+text = "Time:"
+align = 2
+valign = 1
+
+[node name="Seconds" type="Label" parent="HBoxContainer/Bar3"]
+margin_left = 210.0
+margin_top = 22.0
+margin_right = 260.0
+margin_bottom = 53.0
+rect_min_size = Vector2( 50, 0 )
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "999"
+align = 1
 valign = 1
 
 [node name="TimeOutTimer" type="Timer" parent="."]

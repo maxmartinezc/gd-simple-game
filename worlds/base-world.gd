@@ -22,7 +22,7 @@ func _on_Top_body_entered(body):
 func _setup():
 	$Player/Health.connect("take_damage", self, "_on_Ball_take_damage")
 	$Player/Health.connect("recover_health", self, "_on_Health_recover_health")
-	$Player.connect("death", self, "_on_Ball_death")
+	$Player/Ball.connect("death", self, "_on_Ball_death")
 	$GUIS/LifeLayer/Header.connect("time_out", self, "level_time_out")
 	_connect_coins()
 
