@@ -1,6 +1,6 @@
 extends Node
 
-const SAVE_PATH = "res://save.json"
+const SAVE_PATH = "user://save.json"
 var save_file
 
 # Called when the node enters the scene tree for the first time.

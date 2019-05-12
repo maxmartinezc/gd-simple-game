@@ -4,10 +4,10 @@
 [ext_resource path="res://characters/enemy/spike/spike-down.png" type="Texture" id=2]
 
 [node name="Spike" index="0" instance=ExtResource( 1 )]
+mode = 3
 
 [node name="Body" parent="." index="0"]
 texture = ExtResource( 2 )
 
 [node name="CollisionPolygon2D" parent="." index="1"]
 polygon = PoolVector2Array( -15.6861, -16.011, -0.381516, 16.0181, 16.9742, -16.1688 )
-

@@ -61,7 +61,6 @@ rect_min_size = Vector2( 0, 80 )
 texture_normal = ExtResource( 5 )
 expand = true
 stretch_mode = 3
-
 [connection signal="pressed" from="TextureRect/VBoxContainer/ResumeButton" to="." method="_on_ResumeButton_pressed"]
 [connection signal="pressed" from="TextureRect/VBoxContainer/RestartButton" to="." method="_on_RestartButton_pressed"]
 [connection signal="pressed" from="TextureRect/VBoxContainer/ExitButton" to="." method="_on_ExitButton_pressed"]

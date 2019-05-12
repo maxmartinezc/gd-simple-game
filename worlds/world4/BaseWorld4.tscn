@@ -7,11 +7,11 @@
 
 [node name="BaseWorld4" index="0" instance=ExtResource( 1 )]
 
+[node name="Background" parent="." index="0"]
+texture = ExtResource( 2 )
+
 [node name="CollisionPolygon2D" parent="Limits/Bottom" index="0"]
 polygon = PoolVector2Array( 322.746, -17.4995, 322.746, 62.2355, -322.851, 63.0929, -322.851, -51.7941, -317.707, -46.65, -309.29, -45.2992, -302.072, -45.0167, -299.737, -42.9727, -286.013, -41.8048, -253.603, -34.7971, -228.784, -28.9574, -195.79, -21.0738, -158.415, -12.0222, -130.093, -3.26263, -104.69, 5.49695, -83.375, 11.9207, -57.3882, 18.6363, -33.7373, 26.5199, -10.1248, 31.3625, -3.78931, 32.4457, 27.3979, 38.257, 52.1927, 40.7752, 75.8253, 41.55, 96.679, 39.2255, 131.934, 36.5135, 163.509, 30.896, 186.173, 24.891, 214.733, 16.529, 245.727, 5.31427, 277.128, -6.92004, 313.997, -18.3387 )
-
-[node name="Background" parent="." index="1"]
-texture = ExtResource( 2 )
 
 [node name="CemeteryGround" parent="Objects" index="0" instance=ExtResource( 3 )]
 position = Vector2( 237.88, 335.365 )
@@ -41,12 +41,7 @@ modulate = Color( 1, 1, 1, 0.356863 )
 position = Vector2( 373.913, 599.864 )
 script = null
 
-[node name="Ball" parent="." index="3"]
-position = Vector2( 224.024, 274.3 )
-speed = 420
-enabled_light = true
-
-[node name="Hole" parent="." index="4"]
+[node name="Hole" parent="." index="6"]
+coins_to_winner = 5
 longitude = Vector2( 0, 0 )
 type = 0
-

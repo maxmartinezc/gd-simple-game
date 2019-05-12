@@ -2,58 +2,113 @@
 
 [ext_resource path="res://worlds/world3/BaseWorld3.tscn" type="PackedScene" id=1]
 [ext_resource path="res://characters/enemy/cactus/StraightCactus.tscn" type="PackedScene" id=2]
-[ext_resource path="res://characters/enemy/cactus/RoundCactus.tscn" type="PackedScene" id=3]
-[ext_resource path="res://worlds/collectibles/coin/Coin.tscn" type="PackedScene" id=4]
-[ext_resource path="res://worlds/collectibles/heart/Heart.tscn" type="PackedScene" id=5]
+[ext_resource path="res://characters/enemy/spike/Spike.tscn" type="PackedScene" id=3]
+[ext_resource path="res://worlds/environments/stone-block/StoneBlock.tscn" type="PackedScene" id=4]
+[ext_resource path="res://worlds/collectibles/coin/Coin.tscn" type="PackedScene" id=5]
 
-[node name="Level1" instance=ExtResource( 1 )]
+[node name="Level1" index="0" instance=ExtResource( 1 )]
+
+[node name="Limits" parent="." index="2"]
+editor/display_folded = true
+
+[node name="Left" parent="Limits" index="2"]
+position = Vector2( 0.216095, 512.133 )
 
 [node name="Enemies" parent="." index="3"]
 editor/display_folded = true
 
 [node name="StraightCactus" parent="Enemies" index="0" instance=ExtResource( 2 )]
-position = Vector2( 529.713, 721.254 )
-mode = 3
+position = Vector2( 543.448, 714.696 )
 
-[node name="RoundCactus" parent="Enemies" index="1" instance=ExtResource( 3 )]
-position = Vector2( 177.82, 692.372 )
-mode = 3
+[node name="Spike" parent="Enemies" index="1" instance=ExtResource( 3 )]
+position = Vector2( 562.512, 518.795 )
 
-[node name="Stone" parent="Objects" index="0" groups=[
-"platform",
-]]
+[node name="Spike2" parent="Enemies" index="2" instance=ExtResource( 3 )]
+position = Vector2( 502.901, 518.824 )
 
-[node name="StoneBlock" parent="Objects" index="1" groups=[
-"platform",
-]]
+[node name="Spike3" parent="Enemies" index="3" instance=ExtResource( 3 )]
+position = Vector2( 154.277, 390.87 )
+rotation = 3.14159
 
-[node name="StoneBlock2" parent="Objects" index="2" groups=[
-"platform",
-]]
-position = Vector2( 604.53, 601.817 )
+[node name="Spike4" parent="Enemies" index="4" instance=ExtResource( 3 )]
+position = Vector2( 265.609, 640.377 )
+rotation = 1.5708
 
-[node name="StoneBlock3" parent="Objects" index="3" groups=[
-"platform",
-]]
-position = Vector2( 455.275, 493.649 )
+[node name="Spike5" parent="Enemies" index="5" instance=ExtResource( 3 )]
+position = Vector2( 355.117, 296.453 )
+rotation = 1.5708
 
-[node name="Coin" parent="Collectibles" index="0" instance=ExtResource( 4 )]
-position = Vector2( 604.314, 547.195 )
+[node name="Spike6" parent="Enemies" index="6" instance=ExtResource( 3 )]
+position = Vector2( 507.872, 296.071 )
+rotation = 4.71239
 
-[node name="Coin2" parent="Collectibles" index="1" instance=ExtResource( 4 )]
-position = Vector2( 454.066, 438.516 )
+[node name="Objects" parent="." index="4"]
+editor/display_folded = true
 
-[node name="Coin3" parent="Collectibles" index="2" instance=ExtResource( 4 )]
-position = Vector2( 267.549, 297.184 )
+[node name="StoneBlock" parent="Objects" index="0" instance=ExtResource( 4 )]
+position = Vector2( 373.365, 641.104 )
 
-[node name="Heart" parent="Collectibles" index="3" instance=ExtResource( 5 )]
-position = Vector2( 81.3162, 648.138 )
+[node name="StoneBlock4" parent="Objects" index="1" instance=ExtResource( 4 )]
+position = Vector2( 564.271, 473.574 )
+
+[node name="StoneBlock2" parent="Objects" index="2" instance=ExtResource( 4 )]
+position = Vector2( 312.491, 640.879 )
+
+[node name="StoneBlock5" parent="Objects" index="3" instance=ExtResource( 4 )]
+position = Vector2( 273.781, 436.732 )
+
+[node name="StoneBlock9" parent="Objects" index="4" instance=ExtResource( 4 )]
+position = Vector2( 462.179, 297.263 )
+
+[node name="StoneBlock6" parent="Objects" index="5" instance=ExtResource( 4 )]
+position = Vector2( 213.311, 436.595 )
+
+[node name="StoneBlock10" parent="Objects" index="6" instance=ExtResource( 4 )]
+position = Vector2( 401.708, 297.126 )
+
+[node name="StoneBlock7" parent="Objects" index="7" instance=ExtResource( 4 )]
+position = Vector2( 152.77, 436.609 )
+
+[node name="StoneBlock8" parent="Objects" index="8" instance=ExtResource( 4 )]
+position = Vector2( 92.2269, 436.609 )
+
+[node name="StoneBlock3" parent="Objects" index="9" instance=ExtResource( 4 )]
+position = Vector2( 503.398, 473.349 )
+
+[node name="Collectibles" parent="." index="5"]
+editor/display_folded = true
+
+[node name="Coin" parent="Collectibles" index="0" instance=ExtResource( 5 )]
+position = Vector2( 93.3398, 382.421 )
+
+[node name="Coin2" parent="Collectibles" index="1" instance=ExtResource( 5 )]
+position = Vector2( 154.428, 331.922 )
+
+[node name="Coin3" parent="Collectibles" index="2" instance=ExtResource( 5 )]
+position = Vector2( 216.331, 383.236 )
+
+[node name="Coin4" parent="Collectibles" index="3" instance=ExtResource( 5 )]
+position = Vector2( 47.5584, 641.65 )
+
+[node name="Coin5" parent="Collectibles" index="4" instance=ExtResource( 5 )]
+position = Vector2( 47.5584, 691.617 )
+
+[node name="Coin6" parent="Collectibles" index="5" instance=ExtResource( 5 )]
+position = Vector2( 562.031, 417.725 )
+
+[node name="Coin7" parent="Collectibles" index="6" instance=ExtResource( 5 )]
+position = Vector2( 560.181, 247.468 )
+
+[node name="Hole" parent="." index="6"]
+coins_to_winner = 100
+speed = 3
+longitude = Vector2( 300, 0 )
 
 [node name="Player" parent="." index="7"]
-position = Vector2( 510.056, 617.063 )
+position = Vector2( 200.252, 582.565 )
 
-[node name="GUIS" parent="." index="8"]
-editor/display_folded = true
+[node name="Header" parent="GUIS/LifeLayer" index="0"]
+seconds_remaining = 180
 
-[node name="MenuLayer" parent="GUIS" index="1"]
-editor/display_folded = true
+[node name="Gamepad" parent="GUIS" index="2"]
+shoot_speed = 380

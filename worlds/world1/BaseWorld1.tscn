@@ -20,10 +20,6 @@ editor/display_folded = true
 collision_mask = 10
 
 [node name="Hole" parent="." index="6"]
-position = Vector2( 39.6602, 143.909 )
-coins_to_winner = 100
+position = Vector2( 40.1735, 138.776 )
+coins_to_winner = 20
 speed = 5
-
-[node name="Ball" parent="." index="7"]
-position = Vector2( 263.834, 632.756 )
-speed = 600

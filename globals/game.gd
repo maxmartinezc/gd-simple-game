@@ -12,30 +12,37 @@ onready var save_game = preload("res://globals/save.gd").new()
 var worlds = [] setget set_worlds_data, get_worlds_data
 var current_lvl_index = 0 setget , get_current_level
 var current_world_index = 0
-var _coins = 0 setget , get_coins
+var level_coins = 0 setget , get_coins
+var global_score = 0
+var init_level_score = 0
 
 func _ready():
+	get_tree().set_quit_on_go_back(false)
+	get_tree().set_auto_accept_quit(false)
 	var data = generate_game_data() if save_game.is_new_game() else save_game.load_game()
 	set_worlds_data(data.worlds)
+	global_score = data.score
 
 func load_level(world, lvl):
 	SoundFx.stop_background()
 	SoundFx.play_background("World" + str(world))
 	_set_current_world_index_and_level(world, lvl)
+	level_coins = 0
+	init_level_score = global_score
 	get_tree().change_scene(SCENE_PREFIX_NAME.replace("-x-", world).replace("-y-", lvl))
 
 func level_complete(coins, health):
 	#Detenemos la musica
-	SoundFx.stop_background()
+	SoundFx.stop_all()
 	SoundFx.play_fx("Win")
 
 	worlds[current_world_index].levels[current_lvl_index].stars = _calculate_stars_to_winner(health)
 	
-	#global score (suma de las monedas entregadas por el nivel + las monedas recolectadas)
-	_score += coins + _coins
+	#suma de las monedas entregadas por el nivel
+	level_coins += coins
 
 	# increase score
-	worlds[current_world_index].levels[current_lvl_index].score = _score
+	worlds[current_world_index].levels[current_lvl_index].score = level_coins
 	
 	# unlock next world level (solo si existe)
 	if worlds[current_world_index].levels.size() - 1 > current_lvl_index:
@@ -46,10 +53,11 @@ func level_complete(coins, health):
 		worlds[current_world_index + 1].levels[0].open = true
 	else:
 		print("END GAME")
-
+		
+	global_score += level_coins
 	# save level complete
 	save_game.save_game({
-		"score": _score,
+		"score": global_score,
 		"worlds": worlds
 	})
 	
@@ -57,7 +65,7 @@ func level_complete(coins, health):
 	get_tree().change_scene(SCENE_LEVEL_COMPLETE)
 
 func get_score():
-	return _score
+	return global_score
 
 func get_level_complete():
 	return worlds[current_world_index].levels[current_lvl_index]
@@ -116,7 +124,6 @@ func find_files(path, name, find_dir):
 					count += 1
 			elif file_name.find(name,0) > -1:
 				count += 1
-		
 			file_name = dir.get_next()
 	else:
 		print("An error occurred when trying to access the path.")
@@ -152,8 +159,11 @@ func _calculate_stars_to_winner(health):
 		stars = MAX_STARS - 2
 	return stars
 	
-func coin_collected(amount):
-	_coins += amount
+func level_coin_collected(amount):
+	level_coins += amount
 
+func use_coins(amount):
+	global_score -= amount
+	
 func get_coins():
-	return _coins
+	return global_score + level_coins

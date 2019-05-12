@@ -4,6 +4,12 @@
 
 [node name="Level1" instance=ExtResource( 1 )]
 
-[node name="Ball" parent="." index="4"]
-position = Vector2( 123.813, 276.058 )
+[node name="Limits" parent="." index="2"]
+editor/display_folded = true
 
+[node name="Objects" parent="." index="4"]
+editor/display_folded = true
+
+[node name="Player" parent="." index="7"]
+position = Vector2( 123.438, 476.977 )
+enabled_light = true

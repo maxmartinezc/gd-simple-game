@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-export (int) var damage
+export (int) var damage = 5
 const DAMAGE_JUMP_X = 30.5
 const DAMAGE_JUMP_HEIGHT = 150
 

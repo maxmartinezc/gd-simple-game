@@ -1,7 +1,7 @@
 extends Sprite
 
 const RADIUS = 100
-const SMALL_RADIUS = 35
+const SMALL_RADIUS = 10
 
 var stick_pos
 var evt_index = -1

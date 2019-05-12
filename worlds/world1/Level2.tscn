@@ -24,11 +24,11 @@ position = Vector2( 239.438, 447 )
 [node name="Coin2" parent="Objects" index="5" instance=ExtResource( 3 )]
 position = Vector2( 241.754, 229.535 )
 
-[node name="LevelTimeOutTimer" type="Timer" parent="." index="7"]
+[node name="Hole" parent="." index="6"]
+goal_bar_size = 80
 
-[node name="Player" parent="." index="8"]
-position = Vector2( 76.4118, 407.783 )
+[node name="Player" parent="." index="7"]
+position = Vector2( 386.047, 259.939 )
 
-[node name="Header" parent="GUIS/LifeLayer" index="0"]
+[node name="Header" parent="GUIS" index="0"]
 seconds_remaining = 80
-[connection signal="timeout" from="LevelTimeOutTimer" to="." method="_on_LevelTimeOutTimer_timeout"]

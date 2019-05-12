@@ -12,10 +12,22 @@ func _play(node_name):
 		p.play(0)
 
 func stop_background():
-	for p in $Background.get_children():
-		if p.is_playing():
-			p.stop()
+	_stop_all_bg()
 			
 func stop_fx(sfx):
 	var p = get_node("Fx/" + sfx)
 	p.stop()
+
+func stop_all():
+	_stop_all_bg()
+	_stop_all_fx()
+
+func _stop_all_fx():
+	for p in $Fx.get_children():
+		if p.is_playing():
+			p.stop()
+			
+func _stop_all_bg():
+	for p in $Background.get_children():
+		if p.is_playing():
+			p.stop()

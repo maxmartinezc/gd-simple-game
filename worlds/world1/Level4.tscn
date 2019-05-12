@@ -47,3 +47,6 @@ longitude = Vector2( 450, 0 )
 
 [node name="Player" parent="." index="7"]
 position = Vector2( 41.7555, 520.073 )
+
+[node name="Header" parent="GUIS/LifeLayer" index="0"]
+seconds_remaining = 100

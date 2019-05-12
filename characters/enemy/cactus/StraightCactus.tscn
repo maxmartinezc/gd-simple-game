@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://characters/enemy/BaseEnemy.tscn" type="PackedScene" id=1]
-[ext_resource path="res://characters/enemy/cactus/body1.png" type="Texture" id=2]
+[ext_resource path="res://characters/enemy/cactus/straight.png" type="Texture" id=2]
 
-[node name="StraightCactus" instance=ExtResource( 1 )]
-collision_layer = 32
+[node name="StraightCactus" index="0" instance=ExtResource( 1 )]
+mode = 3
 damage = 20
 
 [node name="Body" parent="." index="0"]

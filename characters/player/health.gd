@@ -48,7 +48,6 @@ func get_max_health():
 	return max_health
 
 func _on_InvincibleTimer_timeout():
-	print("timout")
 	$InvincibleTimer.stop()
 	_change_status(STATUSES.NONE)
 	emit_signal("invincible", false)

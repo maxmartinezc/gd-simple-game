@@ -1,8 +1,5 @@
 extends "res://characters/character.gd"
 
-export (bool) var enabled_light = false
-export (int) var speed setget set_speed
-
 signal death()
 var impulse = Vector2()
 var offset = Vector2()
@@ -11,7 +8,6 @@ var animated_sprite_node
 
 func _ready():
 	animated_sprite_node = get_node("../AnimatedSprite")
-	$Light2D.enabled = enabled_light
 	get_node("../Health").connect("take_damage", self, "_on_Health_take_damage")
 	get_node("../Health").connect("invincible", self, "_on_Health_invincible")
 	get_node("../Health").connect("recover_health", self, "_on_Health_recover")
@@ -71,12 +67,12 @@ func enter_state():
 		States.DEATH:
 			_death()
 			
-func _on_Gamepad_shoot(stick_vector, stick_speed, stick_speed_percentage):
+func _on_Gamepad_shoot(stick_vector, stick_speed, stick_speed_percentage, speed):
 	var shoot_speed = float(stick_speed_percentage)/100 * speed
 	offset = Vector2()
 	impulse = Vector2((stick_vector.x * (stick_speed + speed/4)), shoot_speed * -1)
 	change_state(Events.JUMP)
-		
+
 func _bump():
 	apply_impulse(offset, impulse)
 	change_state(Events.FALL)
@@ -107,7 +103,6 @@ func _on_Health_invincible(value):
 	if value:
 		change_state(Events.INVINCIBLE)
 	else:
-		print(state)
 		change_state(Events.IDLE)
 
 func _on_Health_recover(v):
@@ -130,10 +125,6 @@ func _on_Ball_body_shape_entered(body_id, body, body_shape, local_shape):
 		offset = Vector2()
 		impulse =  Vector2(10, 0)
 		change_state(Events.BUMP)
-
-	
-func set_speed(_speed):
-	speed = _speed
 
 func _on_Ball_body_shape_exited(body_id, body, body_shape, local_shape):
 	change_state(Events.FALL)

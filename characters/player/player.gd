@@ -1,12 +1,10 @@
 extends Node2D
-export (int) var speed = 300
 signal death()
+export (bool) var enabled_light = false
 
 func _ready():
-	$Ball.set_speed(speed)
 	get_parent().get_node("GUIS/Gamepad").connect("shoot", $Ball, "_on_Gamepad_shoot")
-#	$Health.connect("take_damage", self, "_on_Health_take_damage")
-#	$Health.connect("invincible", self, "_on_Player_invincible")
+	$Ball/Light2D.enabled = enabled_light
 
 #func _on_Gamepad_shoot():
 #	if can_shoot:
@@ -24,13 +22,3 @@ func _ready():
 #		var shoot_speed = float(stick_speed_percentage)/100 * _speed
 #		SoundFx.play_fx("Jump")
 #		$Ball.apply_impulse(Vector2(), Vector2((stick_vector.x * (stick_speed + _speed/4)), shoot_speed * -1))
-
-#func _on_Health_take_damage(new_health):
-#	if new_health == 0:
-#		emit_signal("death")
-#	else:
-#		$AnimatedSprite.play("damage")
-#
-#func _on_Player_invincible(value):
-#	if value:
-#		$AnimatedSprite.play("invincible")
