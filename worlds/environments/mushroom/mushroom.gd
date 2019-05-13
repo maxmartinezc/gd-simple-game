@@ -16,6 +16,7 @@ func _ready():
 func _on_Area2D_body_entered(body):
 	var gamepad = get_node(gamepad_node_path)
 	SoundFx.play_fx("Throw")
+	print(gamepad.shoot_speed)
 	var shoot_speed = gamepad.shoot_speed + ( gamepad.shoot_speed * trampolin_jump_percentage/100)
 	# cambiamos a IDLE el state para que nos permita genera el salto
 	body.change_state(1)

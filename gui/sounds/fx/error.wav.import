@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/error.wav-46d8fa600fe77137154f3e37eb7e2b4a.sample"
+
+[deps]
+
+source_file="res://gui/sounds/fx/error.wav"
+dest_files=[ "res://.import/error.wav-46d8fa600fe77137154f3e37eb7e2b4a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

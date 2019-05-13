@@ -16,4 +16,4 @@ func _on_Button_pressed(button):
 			game.use_coins(coins_required)
 			emit_signal("activate_skill")
 	else:
-		print("nothing")
+		button.get_parent().skill_not_ready()

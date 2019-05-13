@@ -1,8 +1,8 @@
-extends Control
+extends CanvasLayer
 export (String) var path_scene_select_level
 
 func _ready():
-	set_visible(false)
+	$Control.set_visible(false)
 	
 func _input(event):
 	if event.is_action_pressed("pause"):
@@ -14,12 +14,13 @@ func _on_ResumeButton_pressed():
 func _pause():
 	var new_pause_state = not get_tree().paused
 	get_tree().paused = new_pause_state
-	visible = new_pause_state
+	$Control.visible = new_pause_state
 
 func _on_RestartButton_pressed():
 	SoundFx.play_fx("Switchy")
-	_pause()	
-	get_tree().reload_current_scene()
+	_pause()
+	game.reload_current_level()
+	#get_tree().reload_current_scene()
 
 func _on_ExitButton_pressed():
 	SoundFx.play_fx("Switchy")

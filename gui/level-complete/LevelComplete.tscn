@@ -1,21 +1,21 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://gui/level-complete/level-complete.gd" type="Script" id=1]
 [ext_resource path="res://gui/level-complete/background.png" type="Texture" id=2]
-[ext_resource path="res://gui/level-complete/coin.png" type="Texture" id=3]
+[ext_resource path="res://gui/level-complete/flag.png" type="Texture" id=3]
 [ext_resource path="res://gui/font/montserrat_black.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://gui/level-complete/restart-level.png" type="Texture" id=5]
-[ext_resource path="res://gui/level-complete/continue.png" type="Texture" id=6]
-[ext_resource path="res://gui/level-complete/share.png" type="Texture" id=7]
+[ext_resource path="res://gui/level-complete/coin.png" type="Texture" id=5]
+[ext_resource path="res://gui/level-complete/restart-level.png" type="Texture" id=6]
+[ext_resource path="res://gui/level-complete/continue.png" type="Texture" id=7]
+[ext_resource path="res://gui/level-complete/share.png" type="Texture" id=8]
 
 [sub_resource type="DynamicFont" id=1]
-size = 32
-extra_spacing_top = 10
+size = 48
+extra_spacing_bottom = 20
 font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 48
-extra_spacing_bottom = 20
+size = 24
 font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=3]
@@ -44,6 +44,9 @@ margin_top = -398.0
 margin_right = 250.0
 margin_bottom = 432.0
 custom_constants/separation = 20
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
 margin_right = 500.0
@@ -54,73 +57,87 @@ texture = ExtResource( 2 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 51.0
-margin_top = 213.0
+margin_top = 122.0
 margin_right = -55.0
-margin_bottom = -153.0
-custom_constants/separation = 50
+margin_bottom = -10.0
 
 [node name="Stars" type="TextureRect" parent="VBoxContainer/TextureRect/VBoxContainer"]
 margin_right = 394.0
 stretch_mode = 4
 
-[node name="Score" type="HBoxContainer" parent="VBoxContainer/TextureRect/VBoxContainer"]
-margin_top = 50.0
+[node name="Points" type="HBoxContainer" parent="VBoxContainer/TextureRect/VBoxContainer"]
+margin_top = 4.0
 margin_right = 394.0
-margin_bottom = 135.0
+margin_bottom = 254.0
+alignment = 1
 
-[node name="Icon" type="TextureRect" parent="VBoxContainer/TextureRect/VBoxContainer/Score"]
-margin_right = 128.0
-margin_bottom = 85.0
-size_flags_horizontal = 3
+[node name="Level" type="VBoxContainer" parent="VBoxContainer/TextureRect/VBoxContainer/Points"]
+editor/display_folded = true
+margin_left = 74.0
+margin_right = 192.0
+margin_bottom = 250.0
+
+[node name="Flag" type="TextureRect" parent="VBoxContainer/TextureRect/VBoxContainer/Points/Level"]
+margin_right = 118.0
+margin_bottom = 166.0
 texture = ExtResource( 3 )
-stretch_mode = 4
 
-[node name="General" type="Label" parent="VBoxContainer/TextureRect/VBoxContainer/Score"]
-margin_left = 132.0
-margin_top = 17.0
-margin_right = 260.0
-margin_bottom = 67.0
+[node name="Amount" type="Label" parent="VBoxContainer/TextureRect/VBoxContainer/Points/Level"]
+margin_top = 170.0
+margin_right = 118.0
+margin_bottom = 250.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0.47451, 0.388235, 0.388235, 1 )
-text = "0"
-align = 1
-valign = 2
-
-[node name="Level" type="Label" parent="VBoxContainer/TextureRect/VBoxContainer/Score"]
-margin_left = 264.0
-margin_top = 2.0
-margin_right = 394.0
-margin_bottom = 82.0
-size_flags_horizontal = 3
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "1200"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/TextureRect/VBoxContainer"]
-margin_top = 185.0
+[node name="Score" type="HBoxContainer" parent="VBoxContainer/TextureRect/VBoxContainer/Points"]
+editor/display_folded = true
+margin_left = 196.0
+margin_right = 320.0
+margin_bottom = 250.0
+
+[node name="Icon" type="TextureRect" parent="VBoxContainer/TextureRect/VBoxContainer/Points/Score"]
+margin_right = 75.0
+margin_bottom = 250.0
+size_flags_horizontal = 3
+texture = ExtResource( 5 )
+stretch_mode = 4
+
+[node name="Amount" type="Label" parent="VBoxContainer/TextureRect/VBoxContainer/Points/Score"]
+margin_left = 79.0
+margin_top = 109.0
+margin_right = 124.0
+margin_bottom = 140.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "999"
+align = 1
+
+[node name="Buttons" type="HBoxContainer" parent="VBoxContainer/TextureRect/VBoxContainer"]
+margin_top = 258.0
 margin_right = 394.0
-margin_bottom = 303.0
+margin_bottom = 376.0
 custom_constants/separation = 10
 alignment = 1
 
-[node name="RestartButton" type="TextureButton" parent="VBoxContainer/TextureRect/VBoxContainer/HBoxContainer"]
+[node name="RestartButton" type="TextureButton" parent="VBoxContainer/TextureRect/VBoxContainer/Buttons"]
 margin_left = 47.0
 margin_right = 127.0
 margin_bottom = 118.0
-texture_normal = ExtResource( 5 )
+texture_normal = ExtResource( 6 )
 
-[node name="ContinueButton" type="TextureButton" parent="VBoxContainer/TextureRect/VBoxContainer/HBoxContainer"]
+[node name="ContinueButton" type="TextureButton" parent="VBoxContainer/TextureRect/VBoxContainer/Buttons"]
 margin_left = 137.0
 margin_right = 257.0
 margin_bottom = 118.0
-texture_normal = ExtResource( 6 )
+texture_normal = ExtResource( 7 )
 
-[node name="ShareButton" type="TextureButton" parent="VBoxContainer/TextureRect/VBoxContainer/HBoxContainer"]
+[node name="ShareButton" type="TextureButton" parent="VBoxContainer/TextureRect/VBoxContainer/Buttons"]
 margin_left = 267.0
 margin_right = 347.0
 margin_bottom = 118.0
-texture_normal = ExtResource( 7 )
+texture_normal = ExtResource( 8 )
 
 [node name="Admob" type="Label" parent="VBoxContainer"]
 margin_top = 720.0
@@ -129,6 +146,6 @@ margin_bottom = 782.0
 custom_fonts/font = SubResource( 3 )
 text = "- AdMob Here -"
 align = 1
-[connection signal="pressed" from="VBoxContainer/TextureRect/VBoxContainer/HBoxContainer/RestartButton" to="." method="_on_RestartButton_pressed"]
-[connection signal="pressed" from="VBoxContainer/TextureRect/VBoxContainer/HBoxContainer/ContinueButton" to="." method="_on_ContinueButton_pressed"]
-[connection signal="pressed" from="VBoxContainer/TextureRect/VBoxContainer/HBoxContainer/ShareButton" to="." method="_on_ShareButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/TextureRect/VBoxContainer/Buttons/RestartButton" to="." method="_on_RestartButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/TextureRect/VBoxContainer/Buttons/ContinueButton" to="." method="_on_ContinueButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/TextureRect/VBoxContainer/Buttons/ShareButton" to="." method="_on_ShareButton_pressed"]

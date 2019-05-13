@@ -20,15 +20,17 @@ position = Vector2( 243.907, 267.65 )
 
 [node name="Coin" parent="Objects" index="4" instance=ExtResource( 3 )]
 position = Vector2( 239.438, 447 )
+amount = 50
 
 [node name="Coin2" parent="Objects" index="5" instance=ExtResource( 3 )]
 position = Vector2( 241.754, 229.535 )
+amount = 50
 
 [node name="Hole" parent="." index="6"]
 goal_bar_size = 80
 
 [node name="Player" parent="." index="7"]
-position = Vector2( 386.047, 259.939 )
+position = Vector2( 79.2018, 363.151 )
 
 [node name="Header" parent="GUIS" index="0"]
 seconds_remaining = 80

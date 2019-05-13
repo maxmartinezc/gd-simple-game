@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://gui/sounds/sound-fx.gd" type="Script" id=1]
 [ext_resource path="res://gui/sounds/background/menu.wav" type="AudioStream" id=2]
@@ -18,6 +18,7 @@
 [ext_resource path="res://gui/sounds/fx/throw.wav" type="AudioStream" id=16]
 [ext_resource path="res://gui/sounds/fx/hit.ogg" type="AudioStream" id=17]
 [ext_resource path="res://gui/sounds/fx/boom.ogg" type="AudioStream" id=18]
+[ext_resource path="res://gui/sounds/fx/error.wav" type="AudioStream" id=19]
 
 [node name="SoundFx" type="Node2D"]
 pause_mode = 2
@@ -79,4 +80,8 @@ volume_db = -5.0
 
 [node name="Boom" type="AudioStreamPlayer2D" parent="Fx"]
 stream = ExtResource( 18 )
+volume_db = -10.0
+
+[node name="Error" type="AudioStreamPlayer2D" parent="Fx"]
+stream = ExtResource( 19 )
 volume_db = -10.0

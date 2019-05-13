@@ -12,8 +12,11 @@ onready var save_game = preload("res://globals/save.gd").new()
 var worlds = [] setget set_worlds_data, get_worlds_data
 var current_lvl_index = 0 setget , get_current_level
 var current_world_index = 0
+# cantidad de monedas ganadas en el nivel, es temporal al nievel yse reinicia con cada nivel
 var level_coins = 0 setget , get_coins
+# mantiene el valor global del score para ser actualizado en el sistema de archivos
 var global_score = 0
+# almacenar el valor del score al momento de iniciar el nivel
 var init_level_score = 0
 
 func _ready():
@@ -38,11 +41,9 @@ func level_complete(coins, health):
 
 	worlds[current_world_index].levels[current_lvl_index].stars = _calculate_stars_to_winner(health)
 	
-	#suma de las monedas entregadas por el nivel
-	level_coins += coins
-
 	# increase score
-	worlds[current_world_index].levels[current_lvl_index].score = level_coins
+	worlds[current_world_index].levels[current_lvl_index].score = level_coins + coins
+	worlds[current_world_index].levels[current_lvl_index].coins = level_coins
 	
 	# unlock next world level (solo si existe)
 	if worlds[current_world_index].levels.size() - 1 > current_lvl_index:
@@ -81,8 +82,9 @@ func generate_game_data():
 			# solo el primer nivel esta abierto
 			lvls.push_back({ 
 				"id": l + 1, 
-				"open": true, # if (l == 0 && item.world == 1) else false, 
+				"open": true if (l == 0 && item.world == 1) else false, 
 				"score": 0,
+				"coins": 0,
 				"stars": 0
 			})
 		worlds_cfg.push_back({ "world": item.world, "levels": lvls})
@@ -95,9 +97,8 @@ func get_worlds_data():
 	return worlds
 	
 func get_current_level():
-	# Se incrementa en 1 pq se utiliza el indice del array
 	return { "world" : worlds[current_world_index].world, "level" : worlds[current_world_index].levels[current_lvl_index].id}
-
+	
 func _count_world_levels():
 	var world_lvls = []
 	# iteramos los worlds

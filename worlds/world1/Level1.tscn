@@ -32,9 +32,11 @@ scale = Vector2( 1.30312, 0.985473 )
 
 [node name="Coin" parent="Collectibles" index="0" instance=ExtResource( 3 )]
 position = Vector2( 483.806, 495.648 )
+amount = 50
 
 [node name="Coin2" parent="Collectibles" index="1" instance=ExtResource( 3 )]
 position = Vector2( 333.961, 314.521 )
+amount = 50
 
 [node name="Hole" parent="." index="6"]
 position = Vector2( 320.577, 145.686 )
@@ -43,7 +45,7 @@ type = 0
 goal_bar_size = 100
 
 [node name="Player" parent="." index="7"]
-position = Vector2( 332.803, 229.802 )
+position = Vector2( 74.7592, 217.153 )
 
 [node name="Header" parent="GUIS" index="0"]
 seconds_remaining = 120

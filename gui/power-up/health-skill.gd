@@ -14,5 +14,6 @@ func get_skill():
 	if success:
 		SoundFx.play_fx("PowerUp")
 		get_tree().get_current_scene().get_node("Player/Health").recover_health(recovery_amount)
-		
+	else:
+		skill_not_ready()
 	return success

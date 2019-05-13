@@ -5,6 +5,7 @@
 [ext_resource path="res://gui/power-up/PowerUp.tscn" type="PackedScene" id=3]
 
 [node name="Gamepad" type="CanvasLayer"]
+layer = 2
 script = ExtResource( 1 )
 
 [node name="Analog" parent="." instance=ExtResource( 2 )]

@@ -41,9 +41,11 @@ position = Vector2( 514.172, 427.371 )
 
 [node name="Coin" parent="Collectibles" index="0" instance=ExtResource( 4 )]
 position = Vector2( 144.264, 382.311 )
+amount = 20
 
 [node name="Coin2" parent="Collectibles" index="1" instance=ExtResource( 4 )]
 position = Vector2( 473.29, 382.311 )
+amount = 20
 
 [node name="Hole" parent="." index="6"]
 goal_bar_size = 60

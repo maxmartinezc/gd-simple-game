@@ -9,3 +9,6 @@ func _ready():
 
 func get_skill():
 	pass
+	
+func skill_not_ready():
+	SoundFx.play_fx("Error")

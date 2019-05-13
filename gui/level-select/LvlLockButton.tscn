@@ -9,3 +9,4 @@ margin_bottom = 80.0
 texture_normal = ExtResource( 1 )
 stretch_mode = 3
 script = ExtResource( 2 )
+[connection signal="pressed" from="." to="." method="_on_LvlLockButton_pressed"]

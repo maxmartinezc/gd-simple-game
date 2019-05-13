@@ -5,6 +5,7 @@ var save_file
 
 # Called when the node enters the scene tree for the first time.
 func _init():
+	#print(OS.get_user_data_dir())
 	save_file = File.new()
 
 func save_game(data):
